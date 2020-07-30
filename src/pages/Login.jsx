@@ -1,57 +1,54 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      validEmail: false,
-      validPassword: false,
-      email: '',
-    };
-    this.handleEmail = this.handleEmail.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
-  }
+const Login = () => {
+  const [validEmail, setValidEmail] = useState(false);
+  const [validPassword, setValidPassword] = useState(false);
+  const [email, setEmail] = useState('');
 
-  handleLogin() {
+  const checkEmail = (value) => {
+    setEmail(value);
+    let regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    return value.match(regexEmail) ? setValidEmail(true) : setValidEmail(false);
+  };
+
+  const checkPassword = (pass) => {
+    return pass.length > 6 ? setValidPassword(true) : setValidPassword(false);
+  };
+
+  const handleLogin = () => {
     localStorage.setItem('mealsToken', '1');
-
     localStorage.setItem('cocktailsToken', '1');
-
     localStorage.setItem('user', JSON.stringify({ email }));
+  };
 
-    return <Redirect to="/comidas" />;
-  }
-
-  render() {
-    return (
-      <div>
-        Login
-        <input
-          type="email"
-          data-testid="email-input"
-          placeholder="Email"
-          onChange={(event) => console.log(event.target.value)}
-        />
-        <input
-          type="password"
-          data-testid="password-input"
-          placeholder="Senha"
-          minLength="7"
-          onChange={(event) => console.log(event.target.value)}
-        />
+  return (
+    <div>
+      Login
+      <input
+        type="email"
+        data-testid="email-input"
+        placeholder="Email"
+        onChange={(event) => checkEmail(event.target.value)}
+      />
+      <input
+        type="password"
+        data-testid="password-input"
+        placeholder="Senha"
+        onChange={(event) => checkPassword(event.target.value)}
+      />
+      <Link to="comidas">
         <button
           type="button"
           data-testid="login-submit-btn"
-          disabled
-          onClick={() => this.handleLogin}
+          disabled={!validEmail || !validPassword}
+          onClick={() => handleLogin()}
         >
           Entrar
         </button>
-      </div>
-    );
-  }
-}
+      </Link>
+    </div>
+  );
+};
 
 export default Login;
