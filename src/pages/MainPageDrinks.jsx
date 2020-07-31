@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import HeaderFoods from '../components/HeaderFoods';
+import Header from '../components/Header';
 
-const MainPage = () => <HeaderFoods />;
+const MainPageDrinks = () => <Header />;
 
 const mapStateToProps = (state) => ({
   searchBarVisible: state.searchBar.isVisible,
 });
 
-export default connect(mapStateToProps, null)(MainPage);
+export default connect(mapStateToProps, null)(MainPageDrinks);
