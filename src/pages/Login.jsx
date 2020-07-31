@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import './Login.css';
+
 const Login = () => {
   const [validEmail, setValidEmail] = useState(false);
   const [validPassword, setValidPassword] = useState(false);
@@ -8,7 +10,7 @@ const Login = () => {
 
   const checkEmail = (value) => {
     setEmail(value);
-    const regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    const regexEmail = /[A-Z0-9]{1,}@[A-Z0-9]{2,}\.[A-Z0-9]{2,}/i;
     return value.match(regexEmail) ? setValidEmail(true) : setValidEmail(false);
   };
 
@@ -23,7 +25,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       Login
       <input
         type="email"
