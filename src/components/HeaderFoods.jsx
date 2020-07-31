@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { changeVisibility } from '../actions/index';
 
@@ -24,5 +25,9 @@ const HeaderFoods = ({ changeIsVisible }) => (
 const mapDispatchToProps = (dispatch) => ({
   changeIsVisible: () => dispatch(changeVisibility()),
 });
+
+HeaderFoods.propTypes = {
+  changeIsVisible: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(HeaderFoods);
