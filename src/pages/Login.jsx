@@ -12,8 +12,9 @@ const Login = () => {
     return value.match(regexEmail) ? setValidEmail(true) : setValidEmail(false);
   };
 
-  const checkPassword = (pass) =>
-    pass.length > 6 ? setValidPassword(true) : setValidPassword(false);
+  const checkPassword = (pass) => (
+    pass.length > 6 ? setValidPassword(true) : setValidPassword(false)
+  );
 
   const handleLogin = () => {
     localStorage.setItem('mealsToken', '1');
