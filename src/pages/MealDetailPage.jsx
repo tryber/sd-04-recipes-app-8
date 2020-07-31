@@ -1,9 +1,9 @@
-import React from 'react';
-import RecipeDetails from '../components/RecipeDetails';
+// import React from 'react';
+// import RecipeDetails from '../components/RecipeDetails';
 
-const MealDetailPage = () => {
-// fazer
-  return <RecipeDetails />;
-};
+// const MealDetailPage = () => {
+// FAZER
+//   return <RecipeDetails />;
+// };
 
-export default MealDetailPage;
+// export default MealDetailPage;

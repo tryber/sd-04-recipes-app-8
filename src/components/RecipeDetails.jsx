@@ -2,7 +2,7 @@ import React from 'react';
 
 const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
 let finished = [{ id: 'nothing', doneDate: '' }];
-if (doneRecipes) return finished = doneRecipes;
+if (doneRecipes) finished = doneRecipes;
 
 const RecipeDetails = () => {
   const {
