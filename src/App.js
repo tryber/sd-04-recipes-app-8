@@ -4,6 +4,7 @@ import './App.css';
 
 import Login from './pages/Login';
 import MainPage from './pages/Main';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/comidas" component={MainPage} />
+        <Route exact path="/perfil" component={Profile} />
       </Switch>
     </Router>
   );
