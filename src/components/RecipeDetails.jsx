@@ -7,7 +7,7 @@
 //   return (
 //     <div className="recipe-details-page">
 //       {!loading && error && <h4>{error}</h4>}
-//       {renderDetailsPage(dataArr, choice, ingredientsArr, finished, started)}
+//       {renderDetailsPage( parâmetros )}
 //     </div>
 //   );
 // };
