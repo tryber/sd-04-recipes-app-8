@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import Footer from '../components/Footer';
 import profileIcon from '../images/profileIcon.svg';
 
 import './Profile.css';
 
-const Profile = () => {
-  const [email, setEmail] = useState('');
+const Profile = ({ email }) => {
+  // const [email, setEmail] = useState('');
 
-  useEffect(() => {
-    setEmail(JSON.parse(localStorage.getItem('user')).email);
-  }, []);
+  // useEffect(() => {
+  //   setEmail(JSON.parse(localStorage.getItem('user')).email);
+  // }, []);
 
   return (
     <div>
@@ -42,8 +44,13 @@ const Profile = () => {
           Sair
         </button>
       </Link>
+      <Footer />
     </div>
   );
 };
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  email: state.saveEmail.email,
+});
+
+export default connect(mapStateToProps, null)(Profile);
