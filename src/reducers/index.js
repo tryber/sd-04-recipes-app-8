@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({});
+import searchBar from './searchBar';
+import saveEmail from './saveEmail';
+
+const rootReducer = combineReducers({ searchBar, saveEmail });
 
 export default rootReducer;

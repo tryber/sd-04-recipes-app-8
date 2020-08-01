@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+import { saveUserEmail } from '../actions/index';
+
+const Login = ({ saveMail }) => {
   const [validEmail, setValidEmail] = useState(false);
   const [validPassword, setValidPassword] = useState(false);
   const [email, setEmail] = useState('');
@@ -20,6 +24,7 @@ const Login = () => {
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', '1');
     localStorage.setItem('user', JSON.stringify({ email }));
+    saveMail(email);
   };
 
   return (
@@ -51,4 +56,12 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  saveMail: (payload) => dispatch(saveUserEmail(payload)),
+});
+
+Login.propTypes = {
+  saveMail: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(Login);
