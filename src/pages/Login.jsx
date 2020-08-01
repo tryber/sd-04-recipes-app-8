@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from '../components/SearchBar';
 
 const Login = () => {
   const [validEmail, setValidEmail] = useState(false);
@@ -47,6 +48,7 @@ const Login = () => {
           Entrar
         </button>
       </Link>
+      <SearchBar />
     </div>
   );
 };

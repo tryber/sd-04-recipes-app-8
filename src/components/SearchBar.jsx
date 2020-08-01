@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import fetchThemealAPI from '../actions/themealdb';
 
+const updateSearchBar = (event, searchSetting, setSearchSetting) => {
+  setSearchSetting({ ...searchSetting, [event.target.name]: event.target.value });
+};
+
 const rendersSearchInput = (searchSetting, setSearchSetting) => (
   <label htmlFor="searchInput">
     searchedValue
@@ -18,9 +22,9 @@ const rendersSearchInput = (searchSetting, setSearchSetting) => (
 );
 
 const rendersSearchOption = (searchSetting, setSearchSetting) => {
-  const searchOptionInput = [{ label: "ingredient", value: "ingredient", testid: "ingredient-search-radio" },
-  { label: "Nome", value: "name", testid: "name-search-radio" },
-  { label: "Primeira letra", value: "firstLetter", testid: "first-letter-search-radio" }
+  const searchOptionInput = [{ label: 'ingredient', value: 'ingredient', testid: 'ingredient-search-radio' },
+  { label: 'Nome', value: 'name', testid: 'name-search-radio' },
+  { label: 'Primeira letra', value: 'firstLetter', testid: 'first-letter-search-radio' }
 ];
   return (
     <div>
@@ -42,12 +46,8 @@ const rendersSearchOption = (searchSetting, setSearchSetting) => {
         }
       </form>
     </div>
-  )
-}
-
-const updateSearchBar = (event, searchSetting, setSearchSetting) => {
-  setSearchSetting({ ...searchSetting, [event.target.name]: event.target.value })
-}
+  );
+};
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -57,9 +57,9 @@ const SearchBar = () => {
   });
   const submitSearch = () => {
     searchSetting.searchOption === 'firstLetter' && searchSetting.searchedValue.length > 1 ?
-      alert("Sua busca deve conter somente 1 (um) caracter") :
-      dispatch(fetchThemealAPI(searchSetting))
-  }
+      alert('Sua busca deve conter somente 1 (um) caracter') :
+      dispatch(fetchThemealAPI(searchSetting));
+  };
 
   return (
     <div>

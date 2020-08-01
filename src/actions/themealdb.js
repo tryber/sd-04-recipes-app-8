@@ -18,7 +18,7 @@ const receiveThemealAPIFailure = (error) => ({
 });
 
 function callAPI(searchSetting) {
-  const pageType = 'themeal' // just change to thecocktail when it is drink page
+  const pageType = 'themeal'; // just change to thecocktail when it is drink page
   let url = '';
   switch (searchSetting.searchOption) {
     case 'ingredient':
@@ -38,7 +38,7 @@ function callAPI(searchSetting) {
 
 export default function fetchThemealAPI(searchSetting) {
   requestThemealAPI();
-  return (dispatch, state) => {
+  return (dispatch) => {
     dispatch(requestThemealAPI());
     return callAPI(searchSetting).then(
       (data) => dispatch(requestThemealAPISuccess(data)),
