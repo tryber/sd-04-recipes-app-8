@@ -24,8 +24,8 @@ const rendersSearchInput = (searchSetting, setSearchSetting) => (
 const rendersSearchOption = (searchSetting, setSearchSetting) => {
   const searchOptionInput = [{ label: 'ingredient', value: 'ingredient', testid: 'ingredient-search-radio' },
   { label: 'Nome', value: 'name', testid: 'name-search-radio' },
-  { label: 'Primeira letra', value: 'firstLetter', testid: 'first-letter-search-radio' }
-];
+  { label: 'Primeira letra', value: 'firstLetter', testid: 'first-letter-search-radio' },
+    ];
   return (
     <div>
       <form>
@@ -55,10 +55,12 @@ const SearchBar = () => {
     searchedValue: '',
     searchOption: '',
   });
+
   const submitSearch = () => {
     searchSetting.searchOption === 'firstLetter' && searchSetting.searchedValue.length > 1 ?
       alert('Sua busca deve conter somente 1 (um) caracter') :
       dispatch(fetchThemealAPI(searchSetting));
+      return null;
   };
 
   return (
