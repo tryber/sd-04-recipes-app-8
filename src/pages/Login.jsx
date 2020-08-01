@@ -47,10 +47,6 @@ const Login = () => {
           Entrar
         </button>
       </Link>
-<<<<<<< HEAD
-      <SearchBar />
-=======
->>>>>>> master
     </div>
   );
 };
