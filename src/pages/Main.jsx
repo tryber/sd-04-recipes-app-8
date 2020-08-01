@@ -1,5 +1,13 @@
 import React from 'react';
 
-const MainPage = () => <h1>Tela principal</h1>;
+import HeaderFoods from '../components/HeaderFoods';
+import Footer from '../components/Footer';
+
+const MainPage = () => (
+  <div>
+    <HeaderFoods />
+    <Footer />
+  </div>
+);
 
 export default MainPage;
