@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import fecthThemealAPI from '../actions/themealdb';
+import fetchThemealAPI from '../actions/themealdb';
 
 const rendersSearchInput = (searchSetting, setSearchSetting) => (
   <label htmlFor="searchInput">
@@ -17,70 +17,58 @@ const rendersSearchInput = (searchSetting, setSearchSetting) => (
   </label>
 );
 
-const rendersSearchOption = (searchSetting, setSearchSetting) => (
-  // must be refactored with map
-  <div>
-    <form>
-      <label htmlFor="searchedOption">
-        ingredient
-    <input
-          name="searchOption"
-          type="radio"
-          value="ingredient"
-          data-testid="ingredient-search-radio"
-          onChange={(event) =>
-            updateSearchBar(event, searchSetting, setSearchSetting)
-          }
-        />
-      </label>
-      <label htmlFor="searchedOption">
-        Nome
-    <input
-          name="searchOption"
-          type="radio"
-          value="name"
-          data-testid="name-search-radio"
-          onChange={(event) =>
-            updateSearchBar(event, searchSetting, setSearchSetting)
-          }
-        />
-      </label>
-      <label htmlFor="searchedOption">
-        Primeira letra
-    <input
-          name="searchOption"
-          type="radio"
-          value="firstLetter"
-          data-testid="name-search-radio"
-          onChange={(event) =>
-            updateSearchBar(event, searchSetting, setSearchSetting)
-          }
-        />
-      </label>
-    </form>
-  </div>
-
-)
+const rendersSearchOption = (searchSetting, setSearchSetting) => {
+  const searchOptionInput = [{ label: "ingredient", value: "ingredient", testid: "ingredient-search-radio" },
+  { label: "Nome", value: "name", testid: "name-search-radio" },
+  { label: "Primeira letra", value: "firstLetter", testid: "first-letter-search-radio" }
+];
+  return (
+    <div>
+      <form>
+        {searchOptionInput.map((item) => (
+          <label htmlFor="searchedOption" key={item.label}>
+            {item.label}
+            <input
+              name="searchOption"
+              type="radio"
+              value={item.value}
+              data-testid={item.testid}
+              onChange={(event) =>
+                updateSearchBar(event, searchSetting, setSearchSetting)
+              }
+            />
+          </label>
+        ))
+        }
+      </form>
+    </div>
+  )
+}
 
 const updateSearchBar = (event, searchSetting, setSearchSetting) => {
   setSearchSetting({ ...searchSetting, [event.target.name]: event.target.value })
 }
 
 const SearchBar = () => {
+  const dispatch = useDispatch();
   const [searchSetting, setSearchSetting] = useState({
     searchedValue: '',
     searchOption: '',
   });
-  const dispatch = useDispatch();
+  const submitSearch = () => {
+    searchSetting.searchOption === 'firstLetter' && searchSetting.searchedValue.length > 1 ?
+      alert("Sua busca deve conter somente 1 (um) caracter") :
+      dispatch(fetchThemealAPI(searchSetting))
+  }
+
   return (
     <div>
       {rendersSearchInput(searchSetting, setSearchSetting)}
       {rendersSearchOption(searchSetting, setSearchSetting)}
-    <button onClick={() => dispatch(fecthThemealAPI(searchSetting))}>
-      search
+      <button data-testid="exec-search-btn" onClick={() => submitSearch()}>
+        search
     </button>
     </div>
-
   );
 };
 

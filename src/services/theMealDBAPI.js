@@ -1,7 +1,6 @@
-export async function getbyingredient() {
-  return fetch(
-    'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
-  ).then((recipes) =>
+export async function getRecipesAPI(url) {
+  console.log('API getbyRecipes', url);
+  return fetch(url).then((recipes) =>
     recipes
       .json()
       .then((json) =>

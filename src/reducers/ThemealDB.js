@@ -6,23 +6,17 @@ import {
 
 const initialState = {
   isFetching: false,
-  recipes: {
-    results: {},
-  },
+  recipes: [],
   error: '',
 };
 
 export default (state = initialState, { type, payload }) => {
-  console.log('Action', type, payload )
+  console.log('Action', type, payload);
   switch (type) {
     case REQUEST_THEMEALAPI:
       return { ...state, isFetching: true };
     case RECEIVE_THEMEALAPI_SUCCESS:
-      return {
-        isFetching: false,
-        recipes: 
-          payload,
-      };
+      return { ...state, isFetching: false, recipes: payload };
     case RECEIVE_THEMEALAPI_FAILURE:
       return { ...state, isFetching: false, error: payload };
     default:
