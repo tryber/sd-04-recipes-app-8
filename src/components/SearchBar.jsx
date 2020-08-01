@@ -56,12 +56,10 @@ const SearchBar = () => {
     searchOption: '',
   });
 
-  const submitSearch = () => {(
-    searchSetting.searchOption === 'firstLetter' && searchSetting.searchedValue.length > 1 ?
-    alert('Sua busca deve conter somente 1 (um) caracter') :
+  const submitSearch = () => {
+    // searchSetting.searchOption === 'firstLetter' && searchSetting.searchedValue.length > 1 ?
+    // alert('Sua busca deve conter somente 1 (um) caracter') :
     dispatch(fetchThemealAPI(searchSetting))
-    )
-      return null;
   };
 
   return (
