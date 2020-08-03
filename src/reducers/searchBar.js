@@ -1,7 +1,10 @@
 import { CHANGE_VISIBILITY } from '../actions/index';
+import { SEARCH_RESULT_MORE_ONE } from '../actions/searchBarAction';
 
 const INITIAL_STATE = {
   isVisible: false,
+  searchResultMoreOne: false,
+
 };
 
 const searchBar = (state = INITIAL_STATE, action) => {
@@ -11,6 +14,11 @@ const searchBar = (state = INITIAL_STATE, action) => {
         ...state,
         isVisible: !state.isVisible,
       };
+      case SEARCH_RESULT_MORE_ONE:
+        return {
+          ...state,
+          searchResultMoreOne: !state.searchResultMoreOne,
+        };
     default:
       return state;
   }

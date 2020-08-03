@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import fetchThemealAPI from '../actions/themealdb';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom'
+import fetchThemealAPI, { requestResetAPI, requestResetRecipes } from '../actions/themealdb';
+import { searchResultMoreOne } from '../actions/searchBarAction';
 
 const updateSearchBar = (event, searchSetting, setSearchSetting) => {
   setSearchSetting({ ...searchSetting, [event.target.name]: event.target.value });
@@ -49,11 +51,36 @@ const rendersSearchOption = (searchSetting, setSearchSetting) => {
   );
 };
 
+const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => {
+
+  if (recipes == null) {
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.')
+    dispatch(requestResetRecipes())
+  }
+  else {
+    if (recipes.length === 1) {
+      console.log(' === 1');
+      setSearchSetting({ ...searchSetting, recipesEqualOne: true });
+    }
+    if (recipes.length > 1) dispatch(searchResultMoreOne());
+  }
+
+}
+
 const SearchBar = () => {
+  const { recipes } = useSelector(state => state.ThemealDB)
+  useEffect(() => {
+    dispatch(requestResetAPI())
+    setSearchSetting({ ...searchSetting, recipesEqualOne: false });
+  }, []); //reset isFetching to false when load
+  useEffect(() => { routingAfterAPI(recipes, dispatch, searchSetting, setSearchSetting) }, [recipes]);
+
   const dispatch = useDispatch();
+
   const [searchSetting, setSearchSetting] = useState({
     searchedValue: '',
     searchOption: '',
+    recipesEqualOne: false,
   });
 
   const submitSearch = () => {
@@ -66,6 +93,7 @@ const SearchBar = () => {
 
   return (
     <div>
+      {searchSetting.recipesEqualOne ? (<Redirect push to={`/comidas/${recipes[0].idMeal}`} />) : null}
       {rendersSearchInput(searchSetting, setSearchSetting)}
       {rendersSearchOption(searchSetting, setSearchSetting)}
       <button data-testid="exec-search-btn" onClick={() => submitSearch()}>
