@@ -3,6 +3,16 @@ import getRecipesAPI from '../services/theMealDBAPI';
 export const REQUEST_THEMEALAPI = 'REQUEST_THEMEALAPI';
 export const RECEIVE_THEMEALAPI_SUCCESS = 'RECEIVE_THEMEALAPI_SUCCESS';
 export const RECEIVE_THEMEALAPI_FAILURE = 'RECEIVE_THEMEALAPI_FAILURE';
+export const REQUEST_RESET_FETCH_STATE = 'REQUEST_RESET_FETCH_STATE';
+export const REQUEST_RESET_RECIPES_STATE = 'REQUEST_RESET_RECIPES_STATE';
+
+export const requestResetAPI = () => ({
+  type: REQUEST_RESET_FETCH_STATE,
+});
+
+export const requestResetRecipes = () => ({
+  type: REQUEST_RESET_RECIPES_STATE,
+});
 
 const requestThemealAPI = () => ({
   type: REQUEST_THEMEALAPI,
@@ -18,8 +28,8 @@ const receiveThemealAPIFailure = (error) => ({
   payload: error,
 });
 
-function callAPI(searchSetting) {
-  const pageType = 'themeal'; // just change to thecocktail when it is drink page
+function callAPI(searchSetting, typepage) {
+  const pageType = typepage; // Drink or meal depends of the current page
   let url = '';
   switch (searchSetting.searchOption) {
     case 'ingredient':
@@ -37,11 +47,13 @@ function callAPI(searchSetting) {
   return getRecipesAPI(url);
 }
 
-export default function fetchThemealAPI(searchSetting) {
+export default function FetchThemealAPI(searchSetting) {
   requestThemealAPI();
-  return (dispatch) => {
+  return (dispatch, state) => {
+    const { pageTypeReducer: { type: typepage } } = state();
+    // console.log('typepage', typepage);
     dispatch(requestThemealAPI());
-    return callAPI(searchSetting).then(
+    return callAPI(searchSetting, typepage).then(
       (data) => dispatch(requestThemealAPISuccess(data)),
       (error) => dispatch(receiveThemealAPIFailure(error.message)),
     );

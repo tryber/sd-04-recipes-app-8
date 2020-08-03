@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
 import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 // import RecipeCards from '../components/RecipeCards';
@@ -13,6 +12,7 @@ const MainPageFoods = ({ searchBarVisible, isFetching }) => (
     {searchBarVisible && <SearchBar />}
     {isFetching && 'Loading...'}
     <Footer />
+    {/* { props.searchBarVisible && <SearchBar /> } */}
   </div>
 );
 
