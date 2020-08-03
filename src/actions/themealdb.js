@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import getRecipesAPI from '../services/theMealDBAPI';
 
 export const REQUEST_THEMEALAPI = 'REQUEST_THEMEALAPI';
@@ -28,9 +29,8 @@ const receiveThemealAPIFailure = (error) => ({
   payload: error,
 });
 
-function callAPI(searchSetting) {
-  // console.log('typepage', typepage);
-  const pageType = 'themeal'; // just change to thecocktail when it is drink page
+function callAPI(searchSetting, typepage) {
+  const pageType = typepage; // Drink or meal depends of the current page
   let url = '';
   switch (searchSetting.searchOption) {
     case 'ingredient':
@@ -48,9 +48,11 @@ function callAPI(searchSetting) {
   return getRecipesAPI(url);
 }
 
-export default function fetchThemealAPI(searchSetting, typepage) {
+export default function FetchThemealAPI(searchSetting) {
   requestThemealAPI();
-  return (dispatch) => {
+  return (dispatch, state) => {
+    const { pageTypeReducer: { type: typepage } } = state();
+    console.log('typepage', typepage);
     dispatch(requestThemealAPI());
     return callAPI(searchSetting, typepage).then(
       (data) => dispatch(requestThemealAPISuccess(data)),

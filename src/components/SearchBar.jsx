@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import fetchThemealAPI, { requestResetAPI, requestResetRecipes } from '../actions/themealdb';
+import FetchThemealAPI, { requestResetAPI, requestResetRecipes } from '../actions/themealdb';
 import { searchResultMoreOne } from '../actions/searchBarAction';
 
 const updateSearchBar = (event, searchSetting, setSearchSetting) => {
@@ -83,7 +83,7 @@ const SearchBar = () => {
     if (searchSetting.searchOption === 'firstLetter' && searchSetting.searchedValue.length > 1) {
       alert('Sua busca deve conter somente 1 (um) caracter');
     } else {
-      dispatch(fetchThemealAPI(searchSetting));
+      dispatch(FetchThemealAPI(searchSetting));
     }
   };
 
