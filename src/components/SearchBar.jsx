@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 import fetchThemealAPI, { requestResetAPI, requestResetRecipes } from '../actions/themealdb';
 import { searchResultMoreOne } from '../actions/searchBarAction';
 
@@ -54,7 +54,7 @@ const rendersSearchOption = (searchSetting, setSearchSetting) => {
 const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => {
 
   if (recipes == null) {
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.')
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     dispatch(requestResetRecipes())
   }
   else {
@@ -64,25 +64,22 @@ const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => 
     }
     if (recipes.length > 1) dispatch(searchResultMoreOne());
   }
-
 }
 
 const SearchBar = () => {
-  const { recipes } = useSelector(state => state.ThemealDB)
-  useEffect(() => {
-    dispatch(requestResetAPI())
-    setSearchSetting({ ...searchSetting, recipesEqualOne: false });
-  }, []); //reset isFetching to false when load
-  useEffect(() => { routingAfterAPI(recipes, dispatch, searchSetting, setSearchSetting) }, [recipes]);
-
-  const dispatch = useDispatch();
-
+  const { recipes } = useSelector(state => state.ThemealDB);
   const [searchSetting, setSearchSetting] = useState({
     searchedValue: '',
     searchOption: '',
     recipesEqualOne: false,
   });
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(requestResetAPI())
+    setSearchSetting({ ...searchSetting, recipesEqualOne: false });
+  }, []); //  reset isFetching to false when load
+  useEffect(() => { routingAfterAPI(recipes, dispatch, searchSetting, setSearchSetting) },
+   [recipes]);
   const submitSearch = () => {
     if (searchSetting.searchOption === 'firstLetter' && searchSetting.searchedValue.length > 1) {
       alert('Sua busca deve conter somente 1 (um) caracter');

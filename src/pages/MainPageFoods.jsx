@@ -7,9 +7,9 @@ import SearchBar from '../components/SearchBar';
 
 const MainPageFoods = (props) => (
   <div>
-    <Header title={'comida TEST'}/>
+    <Header title={ 'comida TEST' }/>
     <Footer />
-    {props.searchBarVisible && <SearchBar />}
+    {props.searchBarVisible && <SearchBar/>}
   </div>
 );
 
