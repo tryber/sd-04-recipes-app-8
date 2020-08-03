@@ -28,6 +28,7 @@ const mapStateToProps = (state) => ({
 
 MainPageFoods.propTypes = {
   searchBarVisible: PropTypes.bool.isRequired,
+  searchResultMoreOne: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
 };
 

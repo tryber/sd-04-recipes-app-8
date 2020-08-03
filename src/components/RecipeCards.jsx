@@ -6,7 +6,6 @@ import './RecipeCards.css';
 
 const filteredRecipes = (recipes) => {
   let filtered = [];
-  /// lógica para filtrar recipes
   filtered = recipes.slice(0, 12);
   return filtered;
 };
