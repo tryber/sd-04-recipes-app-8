@@ -7,16 +7,14 @@ import SearchBar from '../components/SearchBar';
 // import RecipeCards from '../components/RecipeCards';
 import Footer from '../components/Footer';
 
-const MainPageFoods = ({ searchBarVisible, isFetching }) => {
-  return (
-    <div>
-      <Header title={'Comidas'} />
-      {searchBarVisible && <SearchBar />}
-      {isFetching && 'Loading...'}
-      <Footer />
-    </div>
-  );
-};
+const MainPageFoods = ({ searchBarVisible, isFetching }) => (
+  <div>
+    <Header title={'Comidas'} />
+    {searchBarVisible && <SearchBar />}
+    {isFetching && 'Loading...'}
+    <Footer />
+  </div>
+);
 
 const mapStateToProps = (state) => ({
   searchBarVisible: state.searchBar.isVisible,
