@@ -61,6 +61,7 @@ const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => 
     return setSearchSetting({ ...searchSetting, recipesEqualOne: true });
   }
   if (recipes.length > 1) return dispatch(searchResultMoreOne());
+  return null;
 };
 
 const SearchBar = () => {
@@ -75,7 +76,8 @@ const SearchBar = () => {
     dispatch(requestResetAPI());
     setSearchSetting({ ...searchSetting, recipesEqualOne: false });
   }, []); //  reset isFetching to false when load
-  useEffect(() => { routingAfterAPI(recipes, dispatch, searchSetting, setSearchSetting);
+  useEffect(() => {
+    routingAfterAPI(recipes, dispatch, searchSetting, setSearchSetting);
   }, [recipes]);
   const submitSearch = () => {
     if (searchSetting.searchOption === 'firstLetter' && searchSetting.searchedValue.length > 1) {
