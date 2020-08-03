@@ -54,15 +54,14 @@ const rendersSearchOption = (searchSetting, setSearchSetting) => {
 const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => {
 
   if (recipes == null) {
-    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     dispatch(requestResetRecipes());
-  } else {
-    if (recipes.length === 1) {
-      console.log(' === 1');
-      setSearchSetting({ ...searchSetting, recipesEqualOne: true });
-    }
-    if (recipes.length > 1) dispatch(searchResultMoreOne());
+    return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
+  if (recipes.length === 1) {
+    console.log(' === 1');
+    return setSearchSetting({ ...searchSetting, recipesEqualOne: true });
+  }
+  if (recipes.length > 1) dispatch(searchResultMoreOne());
 };
 
 const SearchBar = () => {
@@ -78,7 +77,7 @@ const SearchBar = () => {
     setSearchSetting({ ...searchSetting, recipesEqualOne: false });
   }, []); //  reset isFetching to false when load
   useEffect(() => { routingAfterAPI(recipes, dispatch, searchSetting, setSearchSetting) },
-   [recipes]);
+    [recipes]);
   const submitSearch = () => {
     if (searchSetting.searchOption === 'firstLetter' && searchSetting.searchedValue.length > 1) {
       alert('Sua busca deve conter somente 1 (um) caracter');
