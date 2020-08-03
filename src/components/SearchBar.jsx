@@ -52,7 +52,6 @@ const rendersSearchOption = (searchSetting, setSearchSetting) => {
 };
 
 const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => {
-
   if (recipes == null) {
     dispatch(requestResetRecipes());
     return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
