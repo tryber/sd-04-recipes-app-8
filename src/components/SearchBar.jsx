@@ -55,19 +55,18 @@ const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => 
 
   if (recipes == null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-    dispatch(requestResetRecipes())
-  }
-  else {
+    dispatch(requestResetRecipes());
+  } else {
     if (recipes.length === 1) {
       console.log(' === 1');
       setSearchSetting({ ...searchSetting, recipesEqualOne: true });
     }
     if (recipes.length > 1) dispatch(searchResultMoreOne());
   }
-}
+};
 
 const SearchBar = () => {
-  const { recipes } = useSelector(state => state.ThemealDB);
+  const { recipes } = useSelector((state) => state.ThemealDB);
   const [searchSetting, setSearchSetting] = useState({
     searchedValue: '',
     searchOption: '',
