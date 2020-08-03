@@ -5,7 +5,7 @@
 
 // const FavoriteBtn = ({  }) => {
 // };
-  
+
 // FavoriteBtn.propTypes = {
 // };
 
