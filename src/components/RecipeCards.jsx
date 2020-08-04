@@ -10,8 +10,8 @@ const filteredRecipes = (recipes) => {
   return filtered;
 };
 
-const RecipeCards = ({ recipes, pageType }) => {
-  const recipeType = pageType === 'themeal' ? 'Meal' : 'Drink';
+const RecipeCards = ({ recipes, currentLocation }) => {
+  const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
 
   return filteredRecipes(recipes).map((recipe, index) => (
     <div key={recipe[`id${recipeType}`]} data-testid={`${index}-recipe-card`}>
@@ -28,12 +28,12 @@ const RecipeCards = ({ recipes, pageType }) => {
 
 const mapStateToProps = (state) => ({
   recipes: state.ThemealDB.recipes,
-  pageType: state.pageTypeReducer.type,
+  currentLocation: state.updateLocation.currentLocation,
 });
 
 RecipeCards.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pageType: PropTypes.string.isRequired,
+  currentLocation: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, null)(RecipeCards);

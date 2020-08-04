@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import FetchThemealAPI, { requestResetAPI, requestResetRecipes } from '../actions/themealdb';
 import { searchResultMoreOne } from '../actions/searchBarAction';
-
 const updateSearchBar = (event, searchSetting, setSearchSetting) => {
   setSearchSetting({ ...searchSetting, [event.target.name]: event.target.value });
 };
-
 const rendersSearchInput = (searchSetting, setSearchSetting) => (
   <label htmlFor="searchInput">
     searchedValue
@@ -22,7 +20,6 @@ const rendersSearchInput = (searchSetting, setSearchSetting) => (
     />
   </label>
 );
-
 const rendersSearchOption = (searchSetting, setSearchSetting) => {
   const searchOptionInput = [{ label: 'ingredient', value: 'ingredient', testid: 'ingredient-search-radio' },
   { label: 'Nome', value: 'name', testid: 'name-search-radio' },
@@ -50,28 +47,30 @@ const rendersSearchOption = (searchSetting, setSearchSetting) => {
     </div>
   );
 };
-
 const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => {
   if (recipes == null) {
     dispatch(requestResetRecipes());
     return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
   }
   if (recipes.length === 1) {
-    console.log(' === 1');
-    return setSearchSetting({ ...searchSetting, recipesEqualOne: true });
+    const id = `${recipes[0][Object.keys(recipes[0])[0]]}`;
+    return setSearchSetting({ ...searchSetting, recipesEqualOne: true, recipeId: id });
   }
   if (recipes.length > 1) return dispatch(searchResultMoreOne());
   return null;
 };
-
 const SearchBar = () => {
   const { recipes } = useSelector((state) => state.ThemealDB);
+  const { currentLocation } = useSelector((state) => state.updateLocation);
   const [searchSetting, setSearchSetting] = useState({
     searchedValue: '',
     searchOption: '',
     recipesEqualOne: false,
+    recipeId: '',
   });
   const dispatch = useDispatch();
+  const id = searchSetting.recipeId;
+  const initialPath = currentLocation === '/comidas' ? `/comidas/${id}` : `/bebidas/${id}`;
   useEffect(() => {
     dispatch(requestResetAPI());
     setSearchSetting({ ...searchSetting, recipesEqualOne: false });
@@ -86,10 +85,9 @@ const SearchBar = () => {
       dispatch(FetchThemealAPI(searchSetting));
     }
   };
-
   return (
     <div>
-      {searchSetting.recipesEqualOne ? (<Redirect push to={`/comidas/${recipes[0].idMeal}`} />) : null}
+      {searchSetting.recipesEqualOne ? (<Redirect push to={`${initialPath}`} />) : null}
       {rendersSearchInput(searchSetting, setSearchSetting)}
       {rendersSearchOption(searchSetting, setSearchSetting)}
       <button data-testid="exec-search-btn" onClick={() => submitSearch()}>
@@ -98,5 +96,4 @@ const SearchBar = () => {
     </div>
   );
 };
-
 export default SearchBar;
