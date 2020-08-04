@@ -9,10 +9,10 @@ const Favorite = (recipes, setFavoriteIcon) => {
   const typeObj = {
     Drink: 'bebida',
     Meal: 'comida',
-};
+  };
 
-const favoriteIndex = newFavorites.findIndex((favorite) => favorite.id === recipes.id);
-if (favoriteIndex === -1) {
+  const favoriteIndex = newFavorites.findIndex((favorite) => favorite.id === recipes.id);
+  if (favoriteIndex === -1) {
   newFavorites.push({
     id,
     type: typeObj[type],
@@ -21,14 +21,14 @@ if (favoriteIndex === -1) {
     alcoholicOrNot: alcoholicOrNot || '',
     name,
     image,
-    });
-    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
-    setFavoriteIcon(blackHeartIcon);
-  } else {
-    newFavorites.splice(favoriteIndex, 1);
-    localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
-    setFavoriteIcon(whiteHeartIcon);
-  }
+  });
+  localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+  setFavoriteIcon(blackHeartIcon);
+} else {
+  newFavorites.splice(favoriteIndex, 1);
+  localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
+  setFavoriteIcon(whiteHeartIcon);
+}
 };
 
 const FavoriteBtn = ({ dataTestId, recipes }) => {
