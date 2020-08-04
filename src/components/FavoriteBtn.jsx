@@ -14,14 +14,14 @@ const Favorite = (recipes, setFavoriteIcon) => {
   const favoriteIndex = newFavorites.findIndex((favorite) => favorite.id === recipes.id);
   if (favoriteIndex === -1) {
     newFavorites.push({
-    id,
-    type: typeObj[type],
-    area: area || '',
-    category: category || '',
-    alcoholicOrNot: alcoholicOrNot || '',
-    name,
-    image,
-  });
+      id,
+      type: typeObj[type],
+      area: area || '',
+      category: category || '',
+      alcoholicOrNot: alcoholicOrNot || '',
+      name,
+      image,
+    });
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
     setFavoriteIcon(blackHeartIcon);
   } else {
