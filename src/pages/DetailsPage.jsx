@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 
 const DetailsPage = ({ recipes }) => (
   <div>
-    <h1>{recipes.strMeal}</h1>
-    <h2>{recipes.idMeal}</h2>
+    {/* <h1>{recipes.strMeal}</h1>
+    <h2>{recipes.idMeal}</h2> */}
+    <h1>Teste Detail</h1>
   </div>
 );
 
