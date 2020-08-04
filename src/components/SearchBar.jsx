@@ -60,6 +60,16 @@ const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => 
   if (recipes.length > 1) return dispatch(searchResultMoreOne());
   return null;
 };
+
+
+const getPageType = (currLocation, id) => {
+  let pathname;
+  if (currLocation === '/comidas') pathname = `/comidas/${id}`;
+  if (currLocation === '/bebidas') pathname = `/bebidas/${id}`;
+  return pathname;
+}
+
+
 const SearchBar = () => {
   const { recipes } = useSelector((state) => state.ThemealDB);
   const { currentLocation } = useSelector((state) => state.updateLocation);
@@ -71,7 +81,11 @@ const SearchBar = () => {
   });
   const dispatch = useDispatch();
   const id = searchSetting.recipeId;
-  const initialPath = currentLocation === '/comidas' ? `/comidas/${id}` : `/bebidas/${id}`;
+  
+  // const initialPath = currentLocation === '/comidas' ? `/comidas/${id}` : `/bebidas/${id}`;
+
+  const initialPath = getPageType(currentLocation, id);
+
   useEffect(() => {
     dispatch(requestResetAPI());
     setSearchSetting({ ...searchSetting, recipesEqualOne: false });
