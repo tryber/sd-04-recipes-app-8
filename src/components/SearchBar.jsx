@@ -67,7 +67,7 @@ const getPageType = (currLocation, id) => {
   if (currLocation === '/comidas') pathname = `/comidas/${id}`;
   if (currLocation === '/bebidas') pathname = `/bebidas/${id}`;
   return pathname;
-}
+};
 
 
 const SearchBar = () => {
@@ -81,9 +81,8 @@ const SearchBar = () => {
   });
   const dispatch = useDispatch();
   const id = searchSetting.recipeId;
-  
-  // const initialPath = currentLocation === '/comidas' ? `/comidas/${id}` : `/bebidas/${id}`;
 
+  // const initialPath = currentLocation === '/comidas' ? `/comidas/${id}` : `/bebidas/${id}`;
   const initialPath = getPageType(currentLocation, id);
 
   useEffect(() => {
