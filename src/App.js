@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import MainPageFoods from './pages/MainPageFoods';
 import MainPageDrinks from './pages/MainPageDrinks';
 import Profile from './pages/Profile';
+import DetailsPage from './pages/DetailsPage'
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <Route exact path="/comidas" component={MainPageFoods} />
         <Route exact path="/bebidas" component={MainPageDrinks} />
         <Route exact path="/perfil" component={Profile} />
+        <Route path="/comidas/:id" component={DetailsPage} />
+        <Route path="/bebidas/:id" component={DetailsPage} />
       </Switch>
     </Router>
   );
