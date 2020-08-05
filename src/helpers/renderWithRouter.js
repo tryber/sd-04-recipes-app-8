@@ -1,6 +1,7 @@
+import React from 'react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 export default function renderWithRouter(component, routeConfigs = {}) {
   const route = routeConfigs.route || '/';
