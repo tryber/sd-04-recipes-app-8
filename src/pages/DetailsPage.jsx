@@ -8,7 +8,8 @@ const DetailsPage = (props) => {
     <div>
       <h1>Título 2</h1>
     </div>
-  ) };
+  );
+ };
 
 const mapStateToProps = (state) => ({
   recipes: state.ThemealDB.recipes,
