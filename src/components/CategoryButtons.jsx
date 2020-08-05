@@ -11,6 +11,7 @@ const CategoryButtons = ({ setCategory, categories }) => (
     </button>
     {categories.slice(0, 5).map((item) => (
       <button
+        data-testid={`${item.strCategory}-category-filter`}
         key={item.strCategory}
         type="button"
         onClick={() => setCategory(item.strCategory)}
