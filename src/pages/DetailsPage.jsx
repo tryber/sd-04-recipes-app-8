@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import ShareBtn from '../components/ShareBtn';
-// import FavoriteBtn from '../components/FavoriteBtn';
 
 const DetailsPage = (props) => {
   console.log(props.match.params.id);
@@ -17,7 +15,7 @@ const mapStateToProps = (state) => ({
 });
 
 DetailsPage.propTypes = {
-  recipes: PropTypes.any,
+  recipes: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default connect(mapStateToProps, null)(DetailsPage);
