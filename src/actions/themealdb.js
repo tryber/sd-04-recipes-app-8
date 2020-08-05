@@ -30,7 +30,6 @@ const receiveThemealAPIFailure = (error) => ({
 
 function callAPI(searchSetting, typepage) {
   const pageType = typepage === '/comidas' ? 'themeal' : 'thecocktail';
-  // const pageType = typepage; // Drink or meal depends of the current page
   let url = '';
   switch (searchSetting.searchOption) {
     case 'ingredient':
@@ -41,6 +40,9 @@ function callAPI(searchSetting, typepage) {
       break;
     case 'firstLetter':
       url = `https://www.${pageType}db.com/api/json/v1/1/search.php?f=${searchSetting.searchedValue}`;
+      break;
+    case 'category':
+      url = `https://www.${pageType}db.com/api/json/v1/1/filter.php?c=${searchSetting.searchedValue}`;
       break;
     default:
       url = `https://www.${pageType}db.com/api/json/v1/1/search.php?s=${searchSetting.searchedValue}`;
@@ -54,7 +56,6 @@ export default function FetchThemealAPI(searchSetting) {
     const {
       updateLocation: { currentLocation: typepage },
     } = state();
-    // console.log('typepage', typepage);
     dispatch(requestThemealAPI());
     return callAPI(searchSetting, typepage).then(
       (data) => dispatch(requestThemealAPISuccess(data)),
