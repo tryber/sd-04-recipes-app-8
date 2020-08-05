@@ -4,16 +4,18 @@ import { connect } from 'react-redux';
 
 import './RecipeCards.css';
 
-const filteredRecipes = (recipes) => {
+const filteredRecipes = (recipes, category) => {
   let filtered = [];
-  filtered = recipes.slice(0, 12);
-  return filtered;
+  if (category === '') filtered = recipes;
+  if (category !== '')
+    filtered = recipes.filter((recipe) => recipe.strCategory === category);
+  return filtered.slice(0, 12);
 };
 
-const RecipeCards = ({ recipes, currentLocation }) => {
+const RecipeCards = ({ recipes, currentLocation, category }) => {
   const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
 
-  return filteredRecipes(recipes).map((recipe, index) => (
+  return filteredRecipes(recipes, category).map((recipe, index) => (
     <div key={recipe[`id${recipeType}`]} data-testid={`${index}-recipe-card`}>
       <img
         data-testid={`${index}-card-img`}
@@ -29,6 +31,7 @@ const RecipeCards = ({ recipes, currentLocation }) => {
 const mapStateToProps = (state) => ({
   recipes: state.ThemealDB.recipes,
   currentLocation: state.updateLocation.currentLocation,
+  category: state.filterByCategory.selectedCategory,
 });
 
 RecipeCards.propTypes = {
