@@ -43,7 +43,7 @@ function callAPI(searchSetting, typepage) {
       url = `https://www.${pageType}db.com/api/json/v1/1/search.php?f=${searchSetting.searchedValue}`;
       break;
     default:
-      url = `https://www.${pageType}db.com/api/json/v1/1/filter.php?i=${searchSetting.searchedValue}`;
+      url = `https://www.${pageType}db.com/api/json/v1/1/search.php?s=${searchSetting.searchedValue}`;
   }
   return getRecipesAPI(url);
 }
@@ -51,7 +51,9 @@ function callAPI(searchSetting, typepage) {
 export default function FetchThemealAPI(searchSetting) {
   requestThemealAPI();
   return (dispatch, state) => {
-    const { updateLocation: { currentLocation: typepage } } = state();
+    const {
+      updateLocation: { currentLocation: typepage },
+    } = state();
     // console.log('typepage', typepage);
     dispatch(requestThemealAPI());
     return callAPI(searchSetting, typepage).then(
