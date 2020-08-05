@@ -1,29 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import './RecipeCards.css';
 
-const filteredRecipes = (recipes, category) => {
-  let filtered = [];
-  if (category === '') filtered = recipes;
-  if (category !== '') {
-    filtered = recipes.filter((recipe) => recipe.strCategory === category);
-  }
-  return filtered.slice(0, 12);
-};
-
-const RecipeCards = ({ recipes, currentLocation, category }) => {
+const RecipeCards = ({ recipes, currentLocation }) => {
   const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
 
-  return filteredRecipes(recipes, category).map((recipe, index) => (
+  const recipeID = (recipe, currentLocation) => {
+    let id;
+    if (currentLocation === '/comidas') id = recipe.idMeal;
+    else id = recipe.idDrink;
+    return id;
+  };
+
+  return recipes.slice(0, 12).map((recipe, index) => (
     <div key={recipe[`id${recipeType}`]} data-testid={`${index}-recipe-card`}>
-      <img
-        data-testid={`${index}-card-img`}
-        src={recipe[`str${recipeType}Thumb`]}
-        alt={`${recipeType} Card`}
-        className="recipe-photo"
-      />
+      <Link to={`${currentLocation}/${recipeID(recipe, currentLocation)}`}>
+        <img
+          data-testid={`${index}-card-img`}
+          src={recipe[`str${recipeType}Thumb`]}
+          alt={`${recipeType} Card`}
+          className="recipe-photo"
+        />
+      </Link>
       <p data-testid={`${index}-card-name`}>{recipe[`str${recipeType}`]}</p>
     </div>
   ));
@@ -32,7 +33,6 @@ const RecipeCards = ({ recipes, currentLocation, category }) => {
 const mapStateToProps = (state) => ({
   recipes: state.ThemealDB.recipes,
   currentLocation: state.updateLocation.currentLocation,
-  category: state.filterByCategory.selectedCategory,
 });
 
 RecipeCards.propTypes = {
