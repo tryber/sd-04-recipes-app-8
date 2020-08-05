@@ -31,14 +31,14 @@ const receiveCategoriesAPIFailure = (error) => ({
 
 function callAPI(typepage) {
   const pageType = typepage === '/comidas' ? 'themeal' : 'thecocktail';
-  let url = `https://www.${pageType}db.com/api/json/v1/1/list.php?c=list`;
+  const url = `https://www.${pageType}db.com/api/json/v1/1/list.php?c=list`;
   return getRecipesAPI(url);
 }
 
 export default function FetchCategoriesAPI() {
   requestCategoriesAPI();
   return (dispatch, state) => {
-    let {
+    const {
       updateLocation: { currentLocation: typepage },
     } = state();
     // typepage = '/comidas'; //MUST_REMOVE

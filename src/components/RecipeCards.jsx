@@ -7,8 +7,9 @@ import './RecipeCards.css';
 const filteredRecipes = (recipes, category) => {
   let filtered = [];
   if (category === '') filtered = recipes;
-  if (category !== '')
+  if (category !== '') {
     filtered = recipes.filter((recipe) => recipe.strCategory === category);
+  }
   return filtered.slice(0, 12);
 };
 
