@@ -8,9 +8,9 @@ import './RecipeCards.css';
 const RecipeCards = ({ recipes, currentLocation }) => {
   const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
 
-  const recipeID = (recipe, currentLocation) => {
+  const recipeID = (recipe, currLocation) => {
     let id;
-    if (currentLocation === '/comidas') id = recipe.idMeal;
+    if (currLocation === '/comidas') id = recipe.idMeal;
     else id = recipe.idDrink;
     return id;
   };

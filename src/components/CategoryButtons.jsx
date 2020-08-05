@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { filterByCategory } from '../actions/index';
-
 import FetchThemealAPI from '../actions/themealdb';
 
 const CategoryButtons = ({ categories }) => {
@@ -56,13 +54,8 @@ const mapStateToProps = (state) => ({
   categories: state.CategoriesReducer.categories,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCategory: (payload) => dispatch(filterByCategory(payload)),
-});
-
 CategoryButtons.propTypes = {
-  setCategory: PropTypes.func.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryButtons);
+export default connect(mapStateToProps, null)(CategoryButtons);
