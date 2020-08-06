@@ -20,7 +20,7 @@ const receiveDetailIdAPIFailure = (error) => ({
 
 function callAPI(searchSetting, typepage) {
   const pageType = typepage === '/comidas' ? 'themeal' : 'thecocktail';
-  let url = `https://www.${pageType}db.com/api/json/v1/1/lookup.php?i=${searchSetting.searchedValue}`;
+  const url = `https://www.${pageType}db.com/api/json/v1/1/lookup.php?i=${searchSetting.searchedValue}`;
   return getRecipesAPI(url);
 }
 
