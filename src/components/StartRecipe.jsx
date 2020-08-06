@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { changeBtnStart } from '../actions/index';
 
@@ -30,5 +31,9 @@ const StartRecipe = ({ btnStart }) => {
 const mapStateToProps = (state) => ({
   btnStart: state.startRecipe.startRecipe,
 });
+
+StartRecipe.propTypes = {
+  btnStart: PropTypes.bool.isRequired,
+};
 
 export default connect(mapStateToProps, null)(StartRecipe);

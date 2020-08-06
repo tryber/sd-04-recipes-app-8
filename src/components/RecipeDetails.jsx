@@ -6,20 +6,20 @@ import './RecipeCards.css';
 
 const RecipeDetails = ({ recipe, currentLocation }) => {
   const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
-  return recipe.map((recipe) => (
-    <div key={recipe[`id${recipeType}`]}>
+  return recipe.map((item) => (
+    <div key={item[`id${recipeType}`]}>
       <div>
         <img
           data-testid="recipe-photo"
-          src={recipe[`str${recipeType}Thumb`]}
+          src={item[`str${recipeType}Thumb`]}
           alt={`${recipeType} Card`}
           className="recipe-photo"
         />
-        <h1 data-testid="recipe-title">{recipe[`str${recipeType}`]}</h1>
-        <h4 data-testid="recipe-category">{recipe.strCategory}</h4>
+        <h1 data-testid="recipe-title">{item[`str${recipeType}`]}</h1>
+        <h4 data-testid="recipe-category">{item.strCategory}</h4>
       </div>
       <h3>Instructions</h3>
-      <p data-testid="instructions">{recipe.strInstructions}</p>
+      <p data-testid="instructions">{item.strInstructions}</p>
     </div>
   ));
 };
