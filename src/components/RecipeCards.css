@@ -5,3 +5,12 @@
   top: 163px;
   width: 161px;
 }
+
+.recomendationContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.reconedationCard {
+margin: 15px;
+}
