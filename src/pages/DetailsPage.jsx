@@ -26,7 +26,7 @@ const DetailsPage = ({ currentLocation, recipe, recomendation }) => {
     dispatch(
       FetchDetailIdAPI({
         searchOption: 'idRecipe',
-        searchedValue: window.location.pathname.slice(9, 14),
+        searchedValue: window.location.pathname.slice(9),
       }),
     );
   }, []);
