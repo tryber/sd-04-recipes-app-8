@@ -20,17 +20,17 @@ const receiveDetailRecomandAPIFailure = (error) => ({
   payload: error,
 });
 
-function callAPI(searchSetting, typepage) {
+function callAPI(searchSetting) {
   let url = '';
   switch (searchSetting.searchOption) {
     case 'recommendation_drink':
-      url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
+      url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
       break;
     case 'recommendation_food':
-      url = `https://www.themealdb.com/api/json/v1/1/search.php?s=`;
+      url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
       break;
     default:
-      url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`;
+      url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
   }
   return getRecipesAPI(url);
 }
