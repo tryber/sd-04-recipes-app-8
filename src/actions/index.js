@@ -1,7 +1,7 @@
 export const CHANGE_VISIBILITY = 'CHANGE_VISIBILITY';
 export const SAVE_EMAIL = 'SAVE_EMAIL';
 export const CHANGE_LOCATION = 'CHANGE_LOCATION';
-export const FILTER_BY_CATEGORY = 'FILTER_BY_CATEGORY';
+export const CHANGE_BTN_START = 'CHANGE_BTN_START';
 
 export const changeVisibility = () => ({
   type: CHANGE_VISIBILITY,
@@ -17,7 +17,6 @@ export const changeLocation = (payload) => ({
   payload,
 });
 
-export const filterByCategory = (payload) => ({
-  type: FILTER_BY_CATEGORY,
-  payload,
+export const changeBtnStart = () => ({
+  type: CHANGE_BTN_START,
 });
