@@ -16,17 +16,17 @@ const RecipeCards = ({ recipes, currentLocation }) => {
   };
 
   return recipes.slice(0, 12).map((recipe, index) => (
-    <div key={recipe[`id${recipeType}`]} data-testid={`${index}-recipe-card`}>
-      <Link to={`${currentLocation}/${recipeID(recipe, currentLocation)}`}>
+    <Link to={`${currentLocation}/${recipeID(recipe, currentLocation)}`}>
+      <div key={recipe[`id${recipeType}`]} data-testid={`${index}-recipe-card`}>
         <img
           data-testid={`${index}-card-img`}
           src={recipe[`str${recipeType}Thumb`]}
           alt={`${recipeType} Card`}
           className="recipe-photo"
         />
-      </Link>
-      <p data-testid={`${index}-card-name`}>{recipe[`str${recipeType}`]}</p>
-    </div>
+        <p data-testid={`${index}-card-name`}>{recipe[`str${recipeType}`]}</p>
+      </div>
+    </Link>
   ));
 };
 

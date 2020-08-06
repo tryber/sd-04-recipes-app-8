@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { changeBtnStart } from '../actions/index';
 
@@ -11,8 +12,10 @@ const StartRecipe = ({ btnStart }) => {
 
   const title = btnStart === false ? 'Iniciar Receita' : 'Continuar Receita';
 
+  const id = window.location.pathname.slice(9, 14);
+
   return (
-    <Link to={`/comidas/{id-da-receita}/in-progress`}>
+    <Link to={`/comidas/${id}/in-progress`}>
       <button
         type="button"
         data-testid="start-recipe-btn"
@@ -28,5 +31,9 @@ const StartRecipe = ({ btnStart }) => {
 const mapStateToProps = (state) => ({
   btnStart: state.startRecipe.startRecipe,
 });
+
+StartRecipe.propTypes = {
+  btnStart: PropTypes.bool.isRequired,
+};
 
 export default connect(mapStateToProps, null)(StartRecipe);
