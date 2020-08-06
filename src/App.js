@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import './App.css';
 
 import Login from './pages/Login';
@@ -10,7 +10,6 @@ import DetailsPage from './pages/DetailsPage';
 
 function App() {
   return (
-    <Router>
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/comidas" component={MainPageFoods} />
@@ -19,7 +18,6 @@ function App() {
         <Route path="/comidas/:id" component={DetailsPage} />
         <Route path="/bebidas/:id" component={DetailsPage} />
       </Switch>
-    </Router>
   );
 }
 
