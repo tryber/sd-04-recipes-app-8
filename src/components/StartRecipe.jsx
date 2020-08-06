@@ -11,8 +11,10 @@ const StartRecipe = ({ btnStart }) => {
 
   const title = btnStart === false ? 'Iniciar Receita' : 'Continuar Receita';
 
+  const id = window.location.pathname.slice(9, 14);
+
   return (
-    <Link to={`/comidas/{id-da-receita}/in-progress`}>
+    <Link to={`/comidas/${id}/in-progress`}>
       <button
         type="button"
         data-testid="start-recipe-btn"
