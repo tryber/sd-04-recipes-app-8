@@ -15,11 +15,11 @@ import StartRecipe from '../components/StartRecipe';
 
 const DetailsPage = ({ currentLocation, recipe, recomendation }) => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(changeLocation(window.location.pathname.slice(0, 8)));
     const pageType =
-      currentLocation === '/comidas'
+      // currentLocation === '/comidas'
+      window.location.pathname.slice(0, 8) === '/comidas'
         ? 'recommendation_drink'
         : 'recommendation_food';
     dispatch(FetchDetailRecomandAPI({ searchOption: pageType }));

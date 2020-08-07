@@ -12,7 +12,7 @@ const StartRecipe = ({ btnStart }) => {
 
   const title = btnStart === false ? 'Iniciar Receita' : 'Continuar Receita';
 
-  const id = window.location.pathname.slice(9, 14);
+  const id = window.location.pathname.slice(9);
 
   return (
     <Link to={`/comidas/${id}/in-progress`}>
