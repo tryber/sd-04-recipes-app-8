@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './RecipeCards.css';
 
 const RecomendationCards = ({ recomendation, currentLocation }) => {
+  const [counter, setCounter] = useState(1);
   const recomendationType = currentLocation === '/comidas' ? 'Drink' : 'Meal';
-  const counter = 1;
 
   return (
     <div className="recomendationContainer">
+      <button disabled={counter === 1} onClick={() => setCounter(counter - 1)} >{'<'}</button>
       {recomendation.slice(0, 6).map((recipe, index) => (
         <div key={recipe[`id${recomendationType}`]}
-          style={{ visibility: (counter === index || counter === index + 1) ? 'visible' : 'hidden' }}
+          style={{ display: (counter === index || counter === index + 1) ? '' : 'none' }}
           className="reconedationCard"
         >
           <img
@@ -27,6 +28,7 @@ const RecomendationCards = ({ recomendation, currentLocation }) => {
         </div>
       ))
       }
+      <button disabled={counter === 5} onClick={() => setCounter(counter + 1)}>{'>'}</button>
     </div>
   );
 };

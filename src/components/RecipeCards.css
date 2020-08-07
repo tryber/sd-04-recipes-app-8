@@ -9,8 +9,9 @@
 .recomendationContainer {
   display: flex;
   flex-direction: row;
+  margin-left: 20px;
 }
 
 .reconedationCard {
-margin: 15px;
+  margin: 15px;
 }
