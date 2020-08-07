@@ -3,26 +3,26 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Ingredients = ({ recipe }) => {
-  let filteredIngredients = [];
-  let filteredMeasures = [];
+  const filteredIngredients = [];
+  const filteredMeasures = [];
   Object.keys(recipe[0]).forEach(function (item) {
     if (
-      item.includes('strIngredient') &
-      (recipe[0][item] !== '') &
-      (recipe[0][item] !== null)
+      item.includes('strIngredient') &&
+      recipe[0][item] !== '' &&
+      recipe[0][item] !== null
     ) {
       filteredIngredients.push(recipe[0][item]);
     }
     if (
-      item.includes('strMeasure') &
-      (recipe[0][item] !== ' ') &
-      (recipe[0][item] !== null)
+      item.includes('strMeasure') &&
+      recipe[0][item] !== ' ' &&
+      recipe[0][item] !== null
     ) {
       filteredMeasures.push(recipe[0][item]);
     }
   });
 
-  let ingredients = {};
+  const ingredients = {};
   filteredIngredients.forEach(
     (ingr, i) => (ingredients[ingr] = filteredMeasures[i]),
   );
