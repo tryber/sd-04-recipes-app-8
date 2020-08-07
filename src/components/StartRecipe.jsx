@@ -37,6 +37,7 @@ const mapStateToProps = (state) => ({
 
 StartRecipe.propTypes = {
   btnStart: PropTypes.bool.isRequired,
+  currentLocation: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, null)(StartRecipe);
