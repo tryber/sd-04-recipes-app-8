@@ -1,10 +1,15 @@
-// import React from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-// const Ingredients = () =>
-//   meal.map((item) => (
-//     <div>
-//       <p>{`${item.strIngredient1}: ${item.strMeasure1}`}</p>
-//     </div>
-//   ));
+const Ingredients = ({ recipe }) => <p>{recipe[0].strIngredient1}</p>;
 
-// export default Ingredients;
+const mapStateToProps = (state) => ({
+  recipe: state.DetailReducer.id,
+});
+
+Ingredients.propTypes = {
+  recipe: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default connect(mapStateToProps, null)(Ingredients);

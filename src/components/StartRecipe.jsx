@@ -7,15 +7,17 @@ import { changeBtnStart } from '../actions/index';
 
 import './StartRecipe.css';
 
-const StartRecipe = ({ btnStart }) => {
+const StartRecipe = ({ btnStart, currentLocation }) => {
   const dispatch = useDispatch();
 
   const title = btnStart === false ? 'Iniciar Receita' : 'Continuar Receita';
 
   const id = window.location.pathname.slice(9);
 
+  const initialPath = currentLocation === '/comidas' ? '/comidas' : '/bebidas';
+
   return (
-    <Link to={`/comidas/${id}/in-progress`}>
+    <Link to={`${initialPath}/${id}/in-progress`}>
       <button
         type="button"
         data-testid="start-recipe-btn"
@@ -30,6 +32,7 @@ const StartRecipe = ({ btnStart }) => {
 
 const mapStateToProps = (state) => ({
   btnStart: state.startRecipe.startRecipe,
+  currentLocation: state.updateLocation.currentLocation,
 });
 
 StartRecipe.propTypes = {
