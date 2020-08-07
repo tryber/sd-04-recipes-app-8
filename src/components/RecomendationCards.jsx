@@ -12,7 +12,8 @@ const RecomendationCards = ({ recomendation, currentLocation }) => {
     <div className="recomendationContainer">
       <button disabled={counter === 1} onClick={() => setCounter(counter - 1)} >{'<'}</button>
       {recomendation.slice(0, 6).map((recipe, index) => (
-        <div key={recipe[`id${recomendationType}`]}
+        <div
+          key={recipe[`id${recomendationType}`]}
           style={{ display: (counter === index || counter === index + 1) ? '' : 'none' }}
           className="reconedationCard"
         >

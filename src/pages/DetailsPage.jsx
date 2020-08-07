@@ -17,13 +17,11 @@ const DetailsPage = ({ currentLocation, recipe, recomendation }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(changeLocation(window.location.pathname.slice(0, 8)));
-    console.log('window.location.pathname.slice(0, 8)',window.location.pathname.slice(0, 8));
     const pageType =
       // currentLocation === '/comidas'
       window.location.pathname.slice(0, 8) === '/comidas'
         ? 'recommendation_drink'
         : 'recommendation_food';
-        console.log("pageType:", pageType, "& currentLocation:", currentLocation );
     dispatch(FetchDetailRecomandAPI({ searchOption: pageType }));
     dispatch(
       FetchDetailIdAPI({
