@@ -3,8 +3,6 @@ import './ShareFavButtons.css';
 import shareIcon from '../images/shareIcon.svg';
 
 const copy = require('clipboard-copy');
-console.log(window.location.pathname);
-
 
 const ShareButton = () => {
   const [copyToClipBoard, setCopyToClipBoard] = useState(false);
@@ -15,15 +13,16 @@ const ShareButton = () => {
     setCopyToClipBoard(true);
   };
 
-
-
   return (
-    <button type="button" data-testid="share-btn" className="share-fav-buttons"
-      onClick={() => handleCopyClipBoard()}>
+    <button type="button"
+      data-testid="share-btn"
+      className="share-fav-buttons"
+      onClick={() => handleCopyClipBoard()}
+    >
       <img src={shareIcon} alt="Share Button" />
       {copyToClipBoard && <span>Link copiado!</span>}
     </button>
-  )
+  );
 };
 
 export default ShareButton;
