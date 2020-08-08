@@ -29,7 +29,7 @@ const Ingredients = ({ recipe }) => {
 
   return Object.entries(ingredients).map((item, index) => (
     <p
-      data-testid={`${index}-ingredient-and-measure`}
+      data-testid={`${index}-ingredient-name-and-measure`}
     >{`- ${item[0]} - ${item[1]}`}</p>
   ));
 };
