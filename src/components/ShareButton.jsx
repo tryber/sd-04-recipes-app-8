@@ -14,7 +14,8 @@ const ShareButton = () => {
   };
   return (
 
-    <button type="button"
+    <button
+      type="button"
       data-testid="share-btn"
       className="share-fav-buttons"
       onClick={() => handleCopyClipBoard()}
