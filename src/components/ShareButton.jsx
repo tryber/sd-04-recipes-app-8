@@ -14,8 +14,11 @@ const ShareButton = () => {
   };
   return (
 
-    <button type="button" data-testid="share-btn"
-    className="share-fav-buttons" onClick={() => handleCopyClipBoard()}>
+    <button type="button"
+      data-testid="share-btn"
+      className="share-fav-buttons"
+      onClick={() => handleCopyClipBoard()}
+    >
       <img src={shareIcon} alt="Share Button" />
       {copyToClipBoard && <span>Link copiado!</span>}
     </button>
