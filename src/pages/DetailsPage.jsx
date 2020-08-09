@@ -8,8 +8,6 @@ import FetchDetailRecomandAPI from '../actions/detailActionsRecomand';
 
 import RecipeDetails from '../components/RecipeDetails';
 import RecipeVideo from '../components/RecipeVideo';
-import ShareButton from '../components/ShareButton';
-import FavoriteButton from '../components/FavoriteButton';
 import RecomendationCards from '../components/RecomendationCards';
 import StartRecipe from '../components/StartRecipe';
 
@@ -36,8 +34,6 @@ const DetailsPage = ({ currentLocation, recipe, recomendation }) => {
   return (
     <div>
       {recipe.length > 0 && <RecipeDetails />}
-      <ShareButton />
-      <FavoriteButton />
       {recipeType === 'Meal' && recipe.length > 0 && <RecipeVideo />}
       {recomendation.length > 0 && <RecomendationCards />}
       <StartRecipe />
