@@ -31,7 +31,6 @@ const RecipeDetails = ({ recipe, currentLocation }) => {
       }
     </div>
   );
-
 };
 
 const mapStateToProps = (state) => ({

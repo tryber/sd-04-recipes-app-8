@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { requestFavoriteFetching, favoriteFetchingSuccess } from '../actions/favoriteAction';
 import './ShareFavButtons.css';
 
@@ -11,7 +11,7 @@ const checkIfFavorite = (props, favorite, setFavorite) => {
   let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
   if (favoriteRecipes === null) favoriteRecipes = [''];
   favoriteRecipes.map((recipe) => {
-    if (recipe.id === id) setFavorite(true)
+    if (recipe.id === id) setFavorite(true);
     return null;
   })
 };
@@ -26,20 +26,27 @@ const addFavorite = (props, dispatch) => {
   } else {
     alcoholicValue = recipe.strAlcoholic;
     type = 'bebida';
-  };
+  }
 
   const newFavorite = {
     id: recipe[`id${recipeType}`],
-    type: type,
+    type,
     area: areaValue,
     category: recipe.strCategory,
     alcoholicOrNot: alcoholicValue,
     name: recipe[`str${recipeType}`],
     image: recipe[`str${recipeType}Thumb`],
-  }
+  };
+
   dispatch(requestFavoriteFetching());
   let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  favoriteRecipes === null ? favoriteRecipes = [newFavorite] : favoriteRecipes.push(newFavorite);
+  if (favoriteRecipes === null) {
+    favoriteRecipes = [newFavorite];
+  }
+  else {
+    favoriteRecipes.push(newFavorite);
+  }
+
   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
   dispatch(favoriteFetchingSuccess());
 };
@@ -47,14 +54,18 @@ const addFavorite = (props, dispatch) => {
 const removeFavorite = (props, dispatch) => {
   dispatch(requestFavoriteFetching());
   const id = props.recipe[0][Object.keys(props.recipe[0])[0]];
-  let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  const favoriteRecipesFiltered = favoriteRecipes.filter(recipe => recipe.id !== id);
+  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  const favoriteRecipesFiltered = favoriteRecipes.filter((recipe) => recipe.id !== id);
   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipesFiltered));
   dispatch(favoriteFetchingSuccess());
 };
 
 const handleFavorite = (favorite, setFavorite, props, dispatch) => {
-  favorite === true ? removeFavorite(props, dispatch) : addFavorite(props, dispatch);
+  if (favorite === true) {
+    removeFavorite(props, dispatch);
+  } else {
+    addFavorite(props, dispatch);
+  }
   setFavorite(!favorite);
 };
 
@@ -64,7 +75,7 @@ const FavoriteButton = (props) => {
   const [favorite, setFavorite] = useState(false);
   const backgroundBtn = favorite ? blackHeartIcon : whiteHeartIcon;
   useEffect(() => {
-    checkIfFavorite(props, favorite, setFavorite,);
+    checkIfFavorite(props, favorite, setFavorite);
   }, []);
 
   return (
@@ -74,8 +85,7 @@ const FavoriteButton = (props) => {
       className="share-fav-buttons"
       onClick={() => handleFavorite(favorite, setFavorite, props, dispatch)}
       src={backgroundBtn} alt="Favorite Button"
-    >
-    </input>
+    />
   );
 };
 
