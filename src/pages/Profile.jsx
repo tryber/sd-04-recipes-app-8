@@ -8,12 +8,6 @@ import profileIcon from '../images/profileIcon.svg';
 
 import './Profile.css';
 
-// const [email, setEmail] = useState('');
-
-// useEffect(() => {
-//   setEmail(JSON.parse(localStorage.getItem('user')).email);
-// }, []);
-
 const Profile = ({ email }) => (
   <div>
     <header className="header-profile">
@@ -43,7 +37,6 @@ const Profile = ({ email }) => (
     <Footer />
   </div>
 );
-
 const mapStateToProps = (state) => ({
   email: state.saveEmail.email,
 });
