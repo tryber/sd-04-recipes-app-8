@@ -13,12 +13,12 @@ const checkIfFavorite = (props, favorite, setFavorite) => {
   favoriteRecipes.map((recipe) => {
     if (recipe.id === id) setFavorite(true);
     return null;
-  })
+  });
 };
 const addFavorite = (props, dispatch) => {
   const recipeType = props.recipeType;
   const recipe = props.recipe[0];
-  let alcoholicValue = ''
+  let alcoholicValue = '';
   let areaValue = '';
   let type = 'comida';
   if (recipeType === 'Meal') {
@@ -42,8 +42,7 @@ const addFavorite = (props, dispatch) => {
   let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
   if (favoriteRecipes === null) {
     favoriteRecipes = [newFavorite];
-  }
-  else {
+  } else {
     favoriteRecipes.push(newFavorite);
   }
 
