@@ -8,10 +8,8 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const checkIfFavorite = (props, favorite, setFavorite) => {
   const id = props.recipe[0][Object.keys(props.recipe[0])[0]];
-  // console.log('test search Id', id);
   let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
   if (favoriteRecipes === null) favoriteRecipes = [''];
-  // console.log('favoriteRecipes', favoriteRecipes);
   favoriteRecipes.map((recipe) => {
     if (recipe.id === id) setFavorite(true)
     return null;
@@ -19,12 +17,10 @@ const checkIfFavorite = (props, favorite, setFavorite) => {
 };
 const addFavorite = (props, dispatch) => {
   const recipeType = props.recipeType;
-  console.log("here recipeType", recipeType);
   const recipe = props.recipe[0];
   let alcoholicValue = ''
   let areaValue = '';
   let type = 'comida';
-  // console.log("test area", recipe.strAlcoholic);
   if (recipeType === 'Meal') {
     areaValue = recipe.strArea;
   } else {
@@ -43,10 +39,7 @@ const addFavorite = (props, dispatch) => {
   }
   dispatch(requestFavoriteFetching());
   let favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  favoriteRecipes === null ?  favoriteRecipes = [newFavorite] : favoriteRecipes.push(newFavorite);
-  // if (favoriteRecipes === null) favoriteRecipes = [''];
-  // favoriteRecipes.push(newFavorite);
-  // console.log("push", favoriteRecipes);
+  favoriteRecipes === null ? favoriteRecipes = [newFavorite] : favoriteRecipes.push(newFavorite);
   localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipes));
   dispatch(favoriteFetchingSuccess());
 };
@@ -83,14 +76,6 @@ const FavoriteButton = (props) => {
       src={backgroundBtn} alt="Favorite Button"
     >
     </input>
-    // <button
-    //   type="button"
-    //   data-testid="favorite-btn"
-    //   className="share-fav-buttons"
-    //   onClick={() => handleFavorite(favorite, setFavorite, props, dispatch)}
-    // >
-    //   <img src={backgroundBtn} alt="Favorite Button" />
-    // </button>
   );
 };
 

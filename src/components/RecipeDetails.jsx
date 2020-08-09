@@ -10,8 +10,8 @@ const RecipeDetails = ({ recipe, currentLocation }) => {
   const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
   return (
     <div>
-       <ShareButton />
-       <FavoriteButton recipe={recipe} recipeType={recipeType}/>
+      <ShareButton />
+      <FavoriteButton recipe={recipe} recipeType={recipeType} />
       {recipe.map((item) => (
         <div key={item[`id${recipeType}`]}>
           <div>
