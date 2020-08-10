@@ -8,6 +8,7 @@ import './RecipeCards.css';
 
 const RecipeDetails = ({ recipe, currentLocation }) => {
   const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
+  const category = currentLocation === '/comidas' ? 'Category' : 'Alcoholic'
   return (
     <div>
       <ShareButton />
