@@ -1,0 +1,9 @@
+.explore-header-container {
+  align-items: center;
+  background-color: lightgrey;
+  display: flex;
+  font-family: Yellowtail, cursive;
+  font-size: 25px;
+  font-weight: 100;
+  justify-content: left;
+}
