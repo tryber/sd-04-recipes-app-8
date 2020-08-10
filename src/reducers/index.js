@@ -7,6 +7,7 @@ import CategoriesReducer from '../reducers/CategoriesReducer';
 import startRecipe from './startRecipe';
 import DetailReducer from '../reducers/DetailReducer';
 import FavoritesReducer from './FavoritesReducer';
+import IngredientsReducer from './IngredientsReducer';
 
 const rootReducer = combineReducers({
   searchBar,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   startRecipe,
   DetailReducer,
   FavoritesReducer,
+  IngredientsReducer,
 });
 
 export default rootReducer;
