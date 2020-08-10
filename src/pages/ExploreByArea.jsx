@@ -19,8 +19,8 @@ const ExploreByArea = ({ isFetching, recipes, isFetchingArea, areas }) => {
     dispatch(FetchAreaAPI());
   }, []);
 
-  const handleSelect = (value) => {
-    return value === 'All'
+  const handleSelect = (value) =>
+    value === 'All'
       ? dispatch(FetchThemealAPI({ searchedValue: '' }))
       : dispatch(
           FetchThemealAPI({
@@ -28,7 +28,6 @@ const ExploreByArea = ({ isFetching, recipes, isFetchingArea, areas }) => {
             searchedValue: value,
           }),
         );
-  };
 
   const dropdownArea = (arrAreas) => (
     <div>
