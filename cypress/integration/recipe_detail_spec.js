@@ -609,7 +609,7 @@ describe('As receitas favoritas devem ser salvas em `localStorage` na chave `fav
           image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
         },
       ];
-
+console.log('favoriteRecipes', favoriteRecipes, 'expectedFavoriteRecipes', expectedFavoriteRecipes);
       expect(favoriteRecipes).to.deep.eq(expectedFavoriteRecipes);
     });
   });

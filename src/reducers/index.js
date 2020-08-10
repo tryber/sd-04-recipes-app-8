@@ -6,6 +6,7 @@ import updateLocation from './saveLocation';
 import CategoriesReducer from '../reducers/CategoriesReducer';
 import startRecipe from './startRecipe';
 import DetailReducer from '../reducers/DetailReducer';
+import FavoritesReducer from './FavoritesReducer';
 
 const rootReducer = combineReducers({
   searchBar,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   CategoriesReducer,
   startRecipe,
   DetailReducer,
+  FavoritesReducer,
 });
 
 export default rootReducer;
