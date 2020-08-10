@@ -19,12 +19,32 @@ const ExploreByArea = ({ isFetching, recipes, isFetchingArea, areas }) => {
     dispatch(FetchAreaAPI());
   }, []);
 
+  const handleSelect = (value) => {
+    value === 'All'
+      ? dispatch(FetchThemealAPI({ searchedValue: '' }))
+      : dispatch(
+          FetchThemealAPI({
+            searchOption: 'area',
+            searchedValue: value,
+          }),
+        );
+  };
+
   const dropdownArea = (arrAreas) => (
     <div>
-      <select data-testid="explore-by-area-dropdown">
+      <select
+        data-testid="explore-by-area-dropdown"
+        onChange={(event) => handleSelect(event.target.value)}
+      >
         <option defaultValue>All</option>
         {arrAreas.map((area) => (
-          <option data-testid={`${area.strArea}-option`}>{area.strArea}</option>
+          <option
+            data-testid={`${area.strArea}-option`}
+            key={area.strArea}
+            value={area.strArea}
+          >
+            {area.strArea}
+          </option>
         ))}
       </select>
     </div>
