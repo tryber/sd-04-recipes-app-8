@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import RecipeDetails from '../components/RecipeDetails';
 
-import handleIngredients from '../services/listIngredients';
+import { objIngredients } from '../services/listIngredients';
 
 const RecipeInProgress = ({ recipe }) => {
-  const [isDisabled, enableBtn] = useState(true);
+  // const [isDisabled, enableBtn] = useState(true);
 
   const ingredientsList = () => {
-    return Object.entries(handleIngredients(recipe)).map((item, index) => (
+    return Object.entries(objIngredients(recipe)).map((item, index) => (
       <label
         htmlFor={`${item[0]} - ${item[1]}`}
         key={`${item[0]} - ${item[1]}`}
@@ -33,11 +33,7 @@ const RecipeInProgress = ({ recipe }) => {
       {recipe.length > 0 && <RecipeDetails />}
       {recipe.length > 0 && ingredientsList()}
       <Link to="/receitas-feitas">
-        <button
-          type="button"
-          data-testid="finish-recipe-btn"
-          disabled={isDisabled}
-        >
+        <button type="button" data-testid="finish-recipe-btn">
           Finalizar Receita
         </button>
       </Link>
