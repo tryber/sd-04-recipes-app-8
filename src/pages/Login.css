@@ -1,44 +1,44 @@
-.form-container {
+.app-name {
     font-family: Yellowtail, cursive;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 200;
+    text-align: center;
+}
+
+.form-container {
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 12px 18px -8px rgba(0, 0, 0, 0.795);
     display: flex;
     flex-direction: column;
+    font-family: Yellowtail, cursive;
     margin: auto;
     padding: 20px;
 }
-  
-.app-name {
-    font-family: Yellowtail, cursive;
-    font-style: italic;
-    font-size: 25px;
-    font-weight: 200;
-    text-align: center;
+
+.image {
+    border-radius: 100%;
+    display: block;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
 }
-  
+
 .login-and-pass-input {
-    font-family: Yellowtail, cursive;
     border: none;
     border-bottom: 1px solid lightgray;
+    font-family: Yellowtail, cursive;
     height: 25px;
     margin-bottom: 5px;
     width: 250px;
 }
   
 .signin-button {
-    font-family: Yellowtail, cursive;
     background: none;
     border: none;
+    font-family: Yellowtail, cursive;
     font-size: 15px;
     margin-top: 15px;
-}
-
-.image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
 }
