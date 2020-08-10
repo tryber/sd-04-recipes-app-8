@@ -8,7 +8,7 @@ import './RecipeCards.css';
 
 const RecipeDetails = ({ recipe, currentLocation }) => {
   const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
-  const category = currentLocation === '/comidas' ? 'Category' : 'Alcoholic'
+  const category = currentLocation === '/comidas' ? 'Category' : 'Alcoholic';
   return (
     <div>
       <ShareButton />
@@ -23,7 +23,7 @@ const RecipeDetails = ({ recipe, currentLocation }) => {
               className="recipe-photo"
             />
             <h1 data-testid="recipe-title">{item[`str${recipeType}`]}</h1>
-            <h4 data-testid="recipe-category">{item.strCategory}</h4>
+            <h4 data-testid="recipe-category">{item[`str${category}`]}</h4>
           </div>
           <h3>Instructions</h3>
           <p data-testid="instructions">{item.strInstructions}</p>
