@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ExploreHeader from '../components/ExploreHeader';
@@ -27,16 +28,20 @@ const ExploreByIngredient = ({ isFetchingIngredients, ingredients }) => {
 
   const renderIngredientCards = (arrIngredients) =>
     arrIngredients.slice(0, 12).map((item, index) => (
-      <div data-testid={`${index}-ingredient-card`}>
-        <img
-          data-testid={`${index}-card-img`}
-          src={`https://www.${pageType}db.com/images/ingredients/${
-            item[`str${ingredientType}`]
-          }-Small.png`}
-          alt="Ingredient Card"
-        />
-        <p data-testid={`${index}-card-name`}>{item[`str${ingredientType}`]}</p>
-      </div>
+      <Link to={window.location.pathname.slice(9, 17)}>
+        <div data-testid={`${index}-ingredient-card`}>
+          <img
+            data-testid={`${index}-card-img`}
+            src={`https://www.${pageType}db.com/images/ingredients/${
+              item[`str${ingredientType}`]
+            }-Small.png`}
+            alt="Ingredient Card"
+          />
+          <p data-testid={`${index}-card-name`}>
+            {item[`str${ingredientType}`]}
+          </p>
+        </div>
+      </Link>
     ));
 
   return (
