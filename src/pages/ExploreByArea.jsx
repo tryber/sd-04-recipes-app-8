@@ -36,7 +36,7 @@ const ExploreByArea = ({ isFetching, recipes, isFetchingArea, areas }) => {
         data-testid="explore-by-area-dropdown"
         onChange={(event) => handleSelect(event.target.value)}
       >
-        <option defaultValue>All</option>
+        <option data-testid="All-option" defaultValue>All</option>
         {arrAreas.map((area) => (
           <option
             data-testid={`${area.strArea}-option`}
