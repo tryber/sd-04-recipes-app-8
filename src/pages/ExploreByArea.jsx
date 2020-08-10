@@ -20,7 +20,7 @@ const ExploreByArea = ({ isFetching, recipes, isFetchingArea, areas }) => {
   }, []);
 
   const handleSelect = (value) => {
-    value === 'All'
+    return value === 'All'
       ? dispatch(FetchThemealAPI({ searchedValue: '' }))
       : dispatch(
           FetchThemealAPI({
