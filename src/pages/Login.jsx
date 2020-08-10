@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import palmirinha from './palmirinha.png'
+import mathieuchef from '../images/mathieuchef.png';
 import './Login.css';
 
 import { saveUserEmail } from '../actions/index';
@@ -32,8 +32,9 @@ const Login = ({ saveMail }) => {
   return (
     <div style={{ margin: 'auto', height: '640px', display: 'flex' }}>
     <form className="form-container">
-    <h1 className="app-name">{" Recettes de Palmirinha "}</h1>
-    <img src={palmirinha} className="img" alt="Foto da Palmirinha" />
+    <h1 className="app-name">{" Couscous à la Mathieu "}</h1>
+    <img src={mathieuchef} className="image" alt="Foto do Mathieu Chef" />
+    <br></br>
       Login
       <input
         className="login-and-pass-input"
