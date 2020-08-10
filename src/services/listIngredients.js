@@ -11,6 +11,11 @@ const handleIngredients = (recipe) => {
       filteredIngredients.push(recipe[0][item]);
       return filteredIngredients;
     }
+  });
+};
+
+const handleMeasures = (recipe) => {
+  Object.keys(recipe[0]).forEach(function (item) {
     if (
       item.includes('strMeasure') &&
       recipe[0][item] !== ' ' &&
@@ -22,8 +27,9 @@ const handleIngredients = (recipe) => {
   });
 };
 
-export const objIngredients = (recipe) => {
+const objIngredients = (recipe) => {
   handleIngredients(recipe);
+  handleMeasures(recipe);
   const ingredients = {};
   filteredIngredients.forEach(
     (ingr, i) => (ingredients[ingr] = filteredMeasures[i]),
@@ -31,3 +37,5 @@ export const objIngredients = (recipe) => {
 
   return ingredients;
 };
+
+export default objIngredients;

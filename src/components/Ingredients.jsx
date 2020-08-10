@@ -2,15 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { objIngredients } from '../services/listIngredients';
+import objIngredients from '../services/listIngredients';
 
-const Ingredients = ({ recipe }) => {
-  return Object.entries(objIngredients(recipe)).map((item, index) => (
+const Ingredients = ({ recipe }) =>
+  Object.entries(objIngredients(recipe)).map((item, index) => (
     <p
       data-testid={`${index}-ingredient-name-and-measure`}
     >{`- ${item[0]} - ${item[1]}`}</p>
   ));
-};
 
 const mapStateToProps = (state) => ({
   recipe: state.DetailReducer.id,

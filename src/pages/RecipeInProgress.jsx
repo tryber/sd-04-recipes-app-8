@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 
 import RecipeDetails from '../components/RecipeDetails';
 
-import { objIngredients } from '../services/listIngredients';
+import objIngredients from '../services/listIngredients';
 
 const RecipeInProgress = ({ recipe }) => {
   // const [isDisabled, enableBtn] = useState(true);
 
-  const ingredientsList = () => {
-    return Object.entries(objIngredients(recipe)).map((item, index) => (
+  const ingredientsList = () =>
+    Object.entries(objIngredients(recipe)).map((item, index) => (
       <label
         htmlFor={`${item[0]} - ${item[1]}`}
         key={`${item[0]} - ${item[1]}`}
@@ -26,7 +26,6 @@ const RecipeInProgress = ({ recipe }) => {
         />
       </label>
     ));
-  };
 
   return (
     <div>

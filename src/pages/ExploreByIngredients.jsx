@@ -25,8 +25,8 @@ const ExploreByIngredient = ({ isFetchingIngredients, ingredients }) => {
       ? 'Ingredient'
       : 'Ingredient1';
 
-  const renderIngredientCards = (arrIngredients) => {
-    return arrIngredients.slice(0, 12).map((item, index) => (
+  const renderIngredientCards = (arrIngredients) =>
+    arrIngredients.slice(0, 12).map((item, index) => (
       <div data-testid={`${index}-ingredient-card`}>
         <img
           data-testid={`${index}-card-img`}
@@ -38,7 +38,6 @@ const ExploreByIngredient = ({ isFetchingIngredients, ingredients }) => {
         <p data-testid={`${index}-card-name`}>{item[`str${ingredientType}`]}</p>
       </div>
     ));
-  };
 
   return (
     <div>
