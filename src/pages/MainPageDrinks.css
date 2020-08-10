@@ -1,0 +1,17 @@
+.main-drinks-title {
+  font-family: Yellowtail, cursive;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.content {
+  background-color: white;
+  font-family: Yellowtail, cursive;
+  font-size: 20px;
+  font-weight: 100;
+  margin: 50px 50px 100px 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

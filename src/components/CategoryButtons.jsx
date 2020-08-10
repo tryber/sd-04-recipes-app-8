@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import './CategoryButtons.css'
+
 import FetchThemealAPI from '../actions/themealdb';
 
 const CategoryButtons = ({ categories }) => {
@@ -28,7 +30,9 @@ const CategoryButtons = ({ categories }) => {
 
   return (
     <div>
+      <div className="category-btns">
       <button
+        className="btn1"
         data-testid="All-category-filter"
         type="button"
         onClick={() => dispatch(FetchThemealAPI({ searchedValue: '' }))}
@@ -37,6 +41,7 @@ const CategoryButtons = ({ categories }) => {
       </button>
       {categories.slice(0, 5).map((item) => (
         <button
+          className="btn2"
           data-testid={`${item.strCategory}-category-filter`}
           key={item.strCategory}
           value={item.strCategory}
@@ -46,6 +51,7 @@ const CategoryButtons = ({ categories }) => {
           {item.strCategory}
         </button>
       ))}
+      </div>
     </div>
   );
 };
