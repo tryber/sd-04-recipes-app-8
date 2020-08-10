@@ -3,16 +3,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import FetchThemealAPI, { requestResetAPI, requestResetRecipes } from '../actions/themealdb';
 import { searchResultMoreOne } from '../actions/searchBarAction';
+import './SearchBar.css';
 
 const updateSearchBar = (event, searchSetting, setSearchSetting) => {
   setSearchSetting({ ...searchSetting, [event.target.name]: event.target.value });
 };
+
 const rendersSearchInput = (searchSetting, setSearchSetting) => (
+  <div className="search-input">
   <label htmlFor="searchInput">
-    searchedValue
+    Buscar:
     <input
-      name="searchedValue"
       type="text"
+      name="searchedValue"
       value={searchSetting.searchedValue}
       data-testid="search-input"
       onChange={(event) =>
@@ -20,19 +23,22 @@ const rendersSearchInput = (searchSetting, setSearchSetting) => (
       }
     />
   </label>
+  </div>
 );
+
 const rendersSearchOption = (searchSetting, setSearchSetting) => {
-  const searchOptionInput = [{ label: 'ingredient', value: 'ingredient', testid: 'ingredient-search-radio' },
-  { label: 'Nome', value: 'name', testid: 'name-search-radio' },
-  { label: 'Primeira letra', value: 'firstLetter', testid: 'first-letter-search-radio' },
+  const searchOptionInput = [{ label: 'Ingrediente:', value: 'ingredient', testid: 'ingredient-search-radio' },
+  { label: 'Nome:', value: 'name', testid: 'name-search-radio' },
+  { label: 'Primeira letra do que procura:', value: 'firstLetter', testid: 'first-letter-search-radio' },
   ];
   return (
-    <div>
+    <div className="item-radio">
       <form>
         {searchOptionInput.map((item) => (
           <label htmlFor="searchedOption" key={item.label}>
             {item.label}
             <input
+              className="options"
               name="searchOption"
               type="radio"
               value={item.value}
@@ -48,6 +54,7 @@ const rendersSearchOption = (searchSetting, setSearchSetting) => {
     </div>
   );
 };
+
 const routingAfterAPI = (recipes, dispatch, searchSetting, setSearchSetting) => {
   if (recipes == null) {
     dispatch(requestResetRecipes());
@@ -68,7 +75,6 @@ const getPageType = (currLocation, id) => {
   if (currLocation === '/bebidas') pathname = `/bebidas/${id}`;
   return pathname;
 };
-
 
 const SearchBar = () => {
   const { recipes } = useSelector((state) => state.ThemealDB);
@@ -100,13 +106,15 @@ const SearchBar = () => {
     }
   };
   return (
-    <div>
+    <div className="search-btn">
+      <div>
       {searchSetting.recipesEqualOne ? (<Redirect push to={`${initialPath}`} />) : null}
       {rendersSearchInput(searchSetting, setSearchSetting)}
       {rendersSearchOption(searchSetting, setSearchSetting)}
       <button data-testid="exec-search-btn" onClick={() => submitSearch()}>
-        search
+        Pesquisar!
     </button>
+    </div>
     </div>
   );
 };

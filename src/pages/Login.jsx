@@ -30,6 +30,7 @@ const Login = ({ saveMail }) => {
   };
 
   return (
+    <div className="body">
     <div style={{ margin: 'auto', height: '640px', display: 'flex' }}>
     <form className="form-container">
     <h1 className="app-name">{" Couscous à la Mathieu "}</h1>
@@ -62,6 +63,7 @@ const Login = ({ saveMail }) => {
         </button>
       </Link>
     </form>
+    </div>
     </div>
   );
 };
