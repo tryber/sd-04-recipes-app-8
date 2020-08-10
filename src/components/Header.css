@@ -5,10 +5,10 @@
   font-family: Yellowtail, cursive;
   font-size: 25px;
   font-weight: 100;
-  text-align: center;
   justify-content: space-around;
   margin-bottom: 10px;
   padding: 10px 0;
   position: relative;
+  text-align: center;
   width: 100%;
 }

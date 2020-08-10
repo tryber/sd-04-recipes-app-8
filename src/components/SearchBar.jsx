@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import FetchThemealAPI, { requestResetAPI, requestResetRecipes } from '../actions/themealdb';
 import { searchResultMoreOne } from '../actions/searchBarAction';
-import './SearchBar.css';
+// import './SearchBar.css';
 
 const updateSearchBar = (event, searchSetting, setSearchSetting) => {
   setSearchSetting({ ...searchSetting, [event.target.name]: event.target.value });

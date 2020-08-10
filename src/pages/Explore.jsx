@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Explore.css';
+// import './Explore.css';
 import ExploreHeader from '../components/ExploreHeader';
 import Footer from '../components/Footer';
 
