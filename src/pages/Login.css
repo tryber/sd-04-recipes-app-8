@@ -1,4 +1,5 @@
 .app-name {
+    background-color: white;
     font-family: Yellowtail, cursive;
     font-size: 25px;
     font-style: italic;
@@ -18,15 +19,15 @@
 }
 
 .image {
-    border-radius: 100%;
+    border-radius: 200%;
     display: block;
-    height: 150px;
     margin-left: auto;
     margin-right: auto;
-    width: 150px;
+    width: 200px;
 }
 
 .login-and-pass-input {
+    background-color: white;
     border: none;
     border-bottom: 1px solid lightgray;
     font-family: Yellowtail, cursive;
