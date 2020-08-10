@@ -9,16 +9,6 @@
   width: 340px;
 }
 
-.recipe-title {
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0 11px 18px -10px rgba(0, 0, 0, 0.795);
-  font-size: 17px;
-  margin-bottom: 5px;
-  padding: 5px;
-  text-align: center;
-}
-
 .ing-display {
   background-color: white;
   border-radius: 15px;
@@ -35,4 +25,14 @@
   margin-top: 20px;
   padding: 15px;
   text-align: justify;
+}
+
+.recipe-title {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 11px 18px -10px rgba(0, 0, 0, 0.795);
+  font-size: 17px;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-align: center;
 }
