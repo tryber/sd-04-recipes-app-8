@@ -10,7 +10,11 @@ import './Footer.css';
 const Footer = () => (
   <footer data-testid="footer" className="footer-container">
     <Link to="/bebidas">
-      <img data-testid="drinks-bottom-btn" src={drinkIcon} alt="Drink Icon" className="drink-icon" />
+      <img 
+        data-testid="drinks-bottom-btn" 
+        src={drinkIcon} alt="Drink Icon" 
+        className="drink-icon" 
+      />
     </Link>
     <Link to="/explorar">
       <img

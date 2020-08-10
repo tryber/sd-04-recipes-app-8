@@ -13,7 +13,12 @@ import './Header.css';
 const Header = ({ changeIsVisible, title }) => (
   <header className="header-container">
     <Link to="/perfil">
-      <img src={profileIcon} alt="Profile Icon" data-testid="profile-top-btn" className="header-icon"/>
+      <img 
+        src={profileIcon} 
+        alt="Profile Icon" 
+        data-testid="profile-top-btn" 
+        className="header-icon"
+      />
     </Link>
     <div className="header-title">
     <h3 data-testid="page-title">{title}</h3>

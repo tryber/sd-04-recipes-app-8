@@ -5,5 +5,5 @@
   font-family: Yellowtail, cursive;
   font-size: 25px;
   font-weight: 100;
-  justify-content: left;
+  justify-content: flex-start;
 }
