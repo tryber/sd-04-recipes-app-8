@@ -9,9 +9,9 @@ const handleIngredients = (recipe) => {
       recipe[0][item] !== null
     ) {
       filteredIngredients.push(recipe[0][item]);
-      return filteredIngredients;
     }
   });
+  return filteredIngredients;
 };
 
 const handleMeasures = (recipe) => {
@@ -22,9 +22,9 @@ const handleMeasures = (recipe) => {
       recipe[0][item] !== null
     ) {
       filteredMeasures.push(recipe[0][item]);
-      return filteredMeasures;
     }
   });
+  return filteredMeasures;
 };
 
 const objIngredients = (recipe) => {
