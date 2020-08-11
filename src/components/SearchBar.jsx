@@ -27,9 +27,9 @@ const rendersSearchInput = (searchSetting, setSearchSetting) => (
 );
 
 const rendersSearchOption = (searchSetting, setSearchSetting) => {
-  const searchOptionInput = [{ label: 'Ingrediente:', value: 'ingredient', testid: 'ingredient-search-radio' },
-  { label: 'Nome:', value: 'name', testid: 'name-search-radio' },
-  { label: 'Primeira letra do que procura:', value: 'firstLetter', testid: 'first-letter-search-radio' },
+  const searchOptionInput = [{ label: 'Ingrediente', value: 'ingredient', testid: 'ingredient-search-radio' },
+  { label: 'Nome', value: 'name', testid: 'name-search-radio' },
+  { label: 'Primeira letra', value: 'firstLetter', testid: 'first-letter-search-radio' },
   ];
   return (
     <div className="item-radio">
