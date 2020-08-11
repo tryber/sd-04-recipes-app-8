@@ -30,10 +30,10 @@ const Profile = ({ email }) => (
       </Link>
       <Link to="/">
         <button
-        className="profile-btn"
-        type="button"
-        data-testid="profile-logout-btn"
-        onClick={() => localStorage.clear()}>
+          className="profile-btn"
+          type="button"
+          data-testid="profile-logout-btn"
+          onClick={() => localStorage.clear()}>
         Sair
       </button>
       </Link>

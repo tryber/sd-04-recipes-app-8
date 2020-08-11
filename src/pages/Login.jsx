@@ -44,23 +44,23 @@ const Login = ({ saveMail }) => {
         onChange={(event) => checkEmail(event.target.value)}
       />
           <input
-          className="login-and-pass-input"
-          type="password"
-          data-testid="password-input"
-          placeholder="Senha"
-          onChange={(event) => checkPassword(event.target.value)}
+            className="login-and-pass-input"
+            type="password"
+            data-testid="password-input"
+            placeholder="Senha"
+            onChange={(event) => checkPassword(event.target.value)}
       />
           <Link to="/comidas">
-          <button
-          className="signin-button"
-          type="button"
-          data-testid="login-submit-btn"
-          disabled={!validEmail || !validPassword}
-          onClick={() => handleLogin()}
+            <button
+            className="signin-button"
+            type="button"
+            data-testid="login-submit-btn"
+            disabled={!validEmail || !validPassword}
+            onClick={() => handleLogin()}
         >
           Entrar
         </button>
-        </Link>
+          </Link>
         </form>
       </div>
     </div>
