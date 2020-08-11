@@ -49,7 +49,7 @@ const Login = ({ saveMail }) => {
             data-testid="password-input"
             placeholder="Senha"
             onChange={(event) => checkPassword(event.target.value)}
-      />
+          />
           <Link to="/comidas">
             <button
               className="signin-button"
@@ -57,7 +57,7 @@ const Login = ({ saveMail }) => {
               data-testid="login-submit-btn"
               disabled={!validEmail || !validPassword}
               onClick={() => handleLogin()}
-        >
+            >
           Entrar
         </button>
           </Link>

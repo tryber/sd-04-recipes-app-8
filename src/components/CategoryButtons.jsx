@@ -36,7 +36,7 @@ const CategoryButtons = ({ categories }) => {
           data-testid="All-category-filter"
           type="button"
           onClick={() => dispatch(FetchThemealAPI({ searchedValue: '' }))}
-          >
+        >
         All
         </button>
         {categories.slice(0, 5).map((item) => (
@@ -47,7 +47,7 @@ const CategoryButtons = ({ categories }) => {
             value={item.strCategory}
             type="button"
             onClick={(event) => handleClick(event.target.value)}
-            >
+          >
             {item.strCategory}
           </button>
         ))}

@@ -33,7 +33,8 @@ const Profile = ({ email }) => (
           className="profile-btn"
           type="button"
           data-testid="profile-logout-btn"
-          onClick={() => localStorage.clear()}>
+          onClick={() => localStorage.clear()}
+        >
         Sair
       </button>
       </Link>
