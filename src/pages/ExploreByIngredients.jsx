@@ -1,25 +1,11 @@
-<<<<<<< HEAD
-import React from 'react';
-=======
 import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
->>>>>>> master
 
 import ExploreHeader from '../components/ExploreHeader';
 import Footer from '../components/Footer';
 
-<<<<<<< HEAD
-const ExploreByIngredient = () => (
-  <div>
-    <ExploreHeader title={'Explorar Ingredientes'} />
-    <Footer />
-  </div>
-);
-
-export default ExploreByIngredient;
-=======
 import FetchIngredientsAPI from '../actions/ingredientsActions';
 import { changeLocation } from '../actions/index';
 import FetchThemealAPI from '../actions/themealdb';
@@ -90,4 +76,3 @@ ExploreByIngredient.propTypes = {
 };
 
 export default connect(mapStateToProps, null)(ExploreByIngredient);
->>>>>>> master

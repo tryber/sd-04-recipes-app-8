@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import FavoriteButton from '../components/FavoriteButton';
 import ExploreHeader from '../components/ExploreHeader';
 import ShareButton from '../components/ShareButton';
-import { Link } from 'react-router-dom';
-
 
 const rendersFilterOption = (filterSetting, setFilterSetting) => {
   const filterOptionInput = [{ label: 'Meal', value: 'comida', testid: 'filter-by-food-btn' },
@@ -41,7 +40,7 @@ const FavoriteRecipes = () => {
       <ExploreHeader title={'Receitas Favoritas'} />
       {rendersFilterOption(filterSetting, setFilterSetting)}
       <div>
-        {favoriteRecipes != null && favoriteRecipes.filter(recipe =>
+        {favoriteRecipes != null && favoriteRecipes.filter((recipe) =>
           recipe.type.includes(filterSetting)).map((recipe, index) => (
             <div>
               <FavoriteButton testid={index} recipe={[{ id: recipe.id }]} />
@@ -65,7 +64,7 @@ const FavoriteRecipes = () => {
         }
       </div>
     </div>
-  )
+  );
 };
 
 export default FavoriteRecipes;

@@ -16,7 +16,7 @@ import ExploreByArea from './pages/ExploreByArea';
 import Profile from './pages/Profile';
 import NotFound from './pages/NotFound';
 
-function App() {
+function App() {dispatch
   return (
     <Switch>
       <Route exact path="/" component={Login} />

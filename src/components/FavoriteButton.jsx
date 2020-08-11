@@ -70,8 +70,8 @@ const handleFavorite = (favorite, setFavorite, props, dispatch) => {
 
 
 const FavoriteButton = (props) => {
-  let testidBtn = "favorite-btn";
-  if (typeof props.testid != 'undefined') testidBtn = `${props.testid}-horizontal-favorite-btn`;
+  let testidBtn = 'favorite-btn';
+  if (typeof props.testid !== 'undefined') testidBtn = `${props.testid}-horizontal-favorite-btn`;
   const dispatch = useDispatch();
   const [favorite, setFavorite] = useState(false);
   const backgroundBtn = favorite ? blackHeartIcon : whiteHeartIcon;
@@ -88,6 +88,11 @@ const FavoriteButton = (props) => {
       src={backgroundBtn} alt="Favorite Button"
     />
   );
+};
+
+FavoriteButton.propTypes = {
+  idInput: PropTypes.string.isRequired,
+  testid: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;
