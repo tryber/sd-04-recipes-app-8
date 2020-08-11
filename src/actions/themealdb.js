@@ -44,6 +44,9 @@ function callAPI(searchSetting, typepage) {
     case 'category':
       url = `https://www.${pageType}db.com/api/json/v1/1/filter.php?c=${searchSetting.searchedValue}`;
       break;
+    case 'area':
+      url = `https://www.${pageType}db.com/api/json/v1/1/filter.php?a=${searchSetting.searchedValue}`;
+      break;
     default:
       url = `https://www.${pageType}db.com/api/json/v1/1/search.php?s=${searchSetting.searchedValue}`;
   }
