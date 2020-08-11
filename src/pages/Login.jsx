@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import mathieuchef from '../images/mathieuchef.png';
+import './Login.css';
 
 import { saveUserEmail } from '../actions/index';
 
@@ -28,30 +30,39 @@ const Login = ({ saveMail }) => {
   };
 
   return (
-    <div className="container">
+    <div className="body">
+      <div style={{ margin: 'auto', height: '640px', display: 'flex' }}>
+        <form className="form-container">
+          <h1 className="app-name">{' Couscous à la Mathieu '}</h1>
+          <img src={mathieuchef} className="image" alt="Foto do Mathieu Chef" />
       Login
       <input
+        className="login-and-pass-input"
         type="email"
         data-testid="email-input"
         placeholder="Email"
         onChange={(event) => checkEmail(event.target.value)}
       />
-      <input
-        type="password"
-        data-testid="password-input"
-        placeholder="Senha"
-        onChange={(event) => checkPassword(event.target.value)}
-      />
-      <Link to="/comidas">
-        <button
-          type="button"
-          data-testid="login-submit-btn"
-          disabled={!validEmail || !validPassword}
-          onClick={() => handleLogin()}
-        >
+          <input
+            className="login-and-pass-input"
+            type="password"
+            data-testid="password-input"
+            placeholder="Senha"
+            onChange={(event) => checkPassword(event.target.value)}
+          />
+          <Link to="/comidas">
+            <button
+              className="signin-button"
+              type="button"
+              data-testid="login-submit-btn"
+              disabled={!validEmail || !validPassword}
+              onClick={() => handleLogin()}
+            >
           Entrar
         </button>
-      </Link>
+          </Link>
+        </form>
+      </div>
     </div>
   );
 };

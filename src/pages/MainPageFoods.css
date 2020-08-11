@@ -1,0 +1,18 @@
+.main-foods-container {
+  background-color: white;
+  font-family: Yellowtail, cursive;
+  font-size: 25px;
+  font-weight: 100;
+  text-align: center;
+}
+
+.content {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  font-family: Yellowtail, cursive;
+  font-size: 20px;
+  font-weight: 100;
+  justify-content: space-around;
+  margin: 50px 50px 100px;
+}

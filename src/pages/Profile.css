@@ -1,8 +1,26 @@
-.header-profile {
-  align-items: center;
-  background-color: gray;
-  color: black;
+.profile-btn {
+  background: none;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 11px 18px -10px rgba(0, 0, 0, 0.795);
+  color: rgb(70, 70, 70);
+  font-family: Yellowtail, cursive;
+  font-size: 15px;
+  height: 30px;
+  margin-bottom: 15px;
+  padding: 5px;
+  width: 250px;
+}
+
+.profile-btn-container {
   display: flex;
-  justify-content: flex-start;
-  padding: 20px;
+  flex-direction: column;
+  font-family: Yellowtail, cursive;
+}
+
+.profile-email {
+  color: #333;
+  font-family: Yellowtail, cursive;
+  margin-bottom: 100px;
 }

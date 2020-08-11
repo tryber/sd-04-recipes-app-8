@@ -1,4 +1,40 @@
-.footer {
-  bottom: 0;
+.drink-icon {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 11px 18px -10px rgba(0, 0, 0, 0.795);
+  height: 40px;
+  left: 10px;
+  padding: 5px;
+  position: absolute;
+  width: 40px;
+}
+
+.explore-icon {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 11px 18px -10px rgba(0, 0, 0, 0.795);
+  height: 40px;
+  left: 154px;
+  padding: 5px;
+  position: absolute;
+  width: 40px;
+}
+
+.footer-container {
+  height: 58px;
+  left: 0;
   position: fixed;
+  top: 582px;
+  width: 360px;
+}
+
+.meal-icon {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 11px 18px -10px rgba(0, 0, 0, 0.795);
+  height: 40px;
+  left: 296px;
+  padding: 5px;
+  position: absolute;
+  width: 40px;
 }
