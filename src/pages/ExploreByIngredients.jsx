@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 
 import FetchIngredientsAPI from '../actions/ingredientsActions';
 import { changeLocation } from '../actions/index';
+import FetchThemealAPI from '../actions/themealdb';
 
 const ExploreByIngredient = ({ isFetchingIngredients, ingredients }) => {
   const dispatch = useDispatch();
@@ -28,7 +29,17 @@ const ExploreByIngredient = ({ isFetchingIngredients, ingredients }) => {
 
   const renderIngredientCards = (arrIngredients) =>
     arrIngredients.slice(0, 12).map((item, index) => (
-      <Link to={window.location.pathname.slice(9, 17)}>
+      <Link
+        to={window.location.pathname.slice(9, 17)}
+        onClick={() =>
+          dispatch(
+            FetchThemealAPI({
+              searchOption: 'ingredient',
+              searchedValue: item[`str${ingredientType}`],
+            }),
+          )
+        }
+      >
         <div data-testid={`${index}-ingredient-card`}>
           <img
             data-testid={`${index}-card-img`}

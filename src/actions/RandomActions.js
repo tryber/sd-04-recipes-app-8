@@ -24,11 +24,11 @@ function callAPI(typepage) {
   return getRecipesAPI(url);
 }
 
-export default function FetchRandomAPI() {
-  return (dispatch, state) => {
-    const {
-      updateLocation: { currentLocation: typepage },
-    } = state();
+export default function FetchRandomAPI(typepage) {
+  return (dispatch) => {
+    // const {
+    //   updateLocation: { currentLocation: typepage },
+    // } = state();
     dispatch(requestRandomAPI);
     return callAPI(typepage).then(
       (data) => dispatch(requestRandomAPISuccess(data)),

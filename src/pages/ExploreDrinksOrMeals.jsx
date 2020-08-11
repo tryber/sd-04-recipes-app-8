@@ -38,7 +38,7 @@ const ExploreDrinksOrMeals = ({ id }) => {
       <button
         type="button"
         data-testid="explore-surprise"
-        onClick={() => dispatch(FetchRandomAPI())}
+        onClick={() => dispatch(FetchRandomAPI(initialPath))}
       >
         Me Surpreenda!
       </button>
