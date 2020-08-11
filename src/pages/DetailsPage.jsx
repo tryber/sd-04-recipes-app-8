@@ -36,14 +36,14 @@ const DetailsPage = ({ currentLocation, recipe, recomendation }) => {
     <div className="details-container">
       <div className="title-icons-container">
         <div className="recipe-title">
-      {recipe.length > 0 && <RecipeDetails />}
-    </div>
+          {recipe.length > 0 && <RecipeDetails />}
+        </div>
         <div className="ing-display">
-      {recipe.length > 0 && <Ingredients />}
-    </div>
+          {recipe.length > 0 && <Ingredients />}
+        </div>
         <div className="instr-display">
-      <h3>Instructions</h3>
-        <div data-testid="instructions">
+          <h3>Instructions</h3>
+          <div data-testid="instructions">
           {recipeType === 'Meal' && recipe.length > 0 && <RecipeVideo />}
           {recomendation.length > 0 && <RecomendationCards />}
         </div>

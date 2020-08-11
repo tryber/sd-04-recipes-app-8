@@ -11,7 +11,7 @@ const ExploreHeader = ({ title }) => (
     <div>
       <div className="explore-header-container">
         <Link to="/perfil">
-        <img src={profileIcon} alt="Profile Icon" data-testid="profile-top-btn" />
+          <img src={profileIcon} alt="Profile Icon" data-testid="profile-top-btn" />
         </Link>
         <h3 data-testid="page-title">{title}</h3>
       </div>

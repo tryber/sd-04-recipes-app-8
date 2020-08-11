@@ -22,7 +22,7 @@ const rendersSearchInput = (searchSetting, setSearchSetting) => (
         updateSearchBar(event, searchSetting, setSearchSetting)
       }
     />
-  </label>
+    </label>
   </div>
 );
 

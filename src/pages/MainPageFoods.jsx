@@ -32,17 +32,17 @@ const MainPageFoods = ({
   return (
     <div>
       <div className="main-foods-container">
-      <Header title={'Comidas'} />
-    </div>
+        <Header title={'Comidas'} />
+      </div>
       <div>
-      {!isFetchingCategories && categories.length > 0 && <CategoryButtons />}
-    </div>
+        {!isFetchingCategories && categories.length > 0 && <CategoryButtons />}
+      </div>
       <div className="content">
-      {searchBarVisible && <SearchBar />}
-      {isFetching && 'Loading...'}
-      {!isFetching && recipes !== null && <RecipeCards />}
-      <Footer />
-    </div>
+        {searchBarVisible && <SearchBar />}
+        {isFetching && 'Loading...'}
+        {!isFetching && recipes !== null && <RecipeCards />}
+        <Footer />
+      </div>
     </div>
   );
 };
