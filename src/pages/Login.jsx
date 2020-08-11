@@ -35,7 +35,7 @@ const Login = ({ saveMail }) => {
       <form className="form-container">
       <h1 className="app-name">{' Couscous à la Mathieu '}</h1>
       <img src={mathieuchef} className="image" alt="Foto do Mathieu Chef" />
-      <br>Login</br>
+      Login
       <input
         className="login-and-pass-input"
         type="email"
