@@ -11,7 +11,7 @@ import Footer from '../components/Footer';
 import { changeLocation } from '../actions/index';
 import FetchThemealAPI from '../actions/themealdb';
 import FetchCategoriesAPI from '../actions/categoriesdbActions';
-import './MainPageFoods.css'
+import './MainPageFoods.css';
 
 const MainPageDrinks = ({
   searchBarVisible,
@@ -32,16 +32,16 @@ const MainPageDrinks = ({
   return (
     <div>
       <div className="main-drinks-title">
-      <Header title={'Bebidas'} />
+        <Header title={'Bebidas'} />
       </div>
       <div>
-      {!isFetchingCategories && categories.length > 0 && <CategoryButtons />}
+        {!isFetchingCategories && categories.length > 0 && <CategoryButtons />}
       </div>
       <div className="content">
-      {searchBarVisible && <SearchBar />}
-      {isFetching && 'Loading...'}
-      {!isFetching && recipes !== null && <RecipeCards />}
-      <Footer />
+        {searchBarVisible && <SearchBar />}
+        {isFetching && 'Loading...'}
+        {!isFetching && recipes !== null && <RecipeCards />}
+        <Footer />
       </div>
     </div>
   );

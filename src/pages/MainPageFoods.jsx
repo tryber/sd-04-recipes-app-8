@@ -6,7 +6,7 @@ import SearchBar from '../components/SearchBar';
 import RecipeCards from '../components/RecipeCards';
 import CategoryButtons from '../components/CategoryButtons';
 import Footer from '../components/Footer';
-import './MainPageFoods.css'
+import './MainPageFoods.css';
 
 import { changeLocation } from '../actions/index';
 import FetchThemealAPI from '../actions/themealdb';
@@ -31,13 +31,13 @@ const MainPageFoods = ({
 
   return (
     <div>
-    <div className="main-foods-container">
+      <div className="main-foods-container">
       <Header title={'Comidas'} />
     </div>
-    <div>
+      <div>
       {!isFetchingCategories && categories.length > 0 && <CategoryButtons />}
     </div>
-    <div className="content">
+      <div className="content">
       {searchBarVisible && <SearchBar />}
       {isFetching && 'Loading...'}
       {!isFetching && recipes !== null && <RecipeCards />}
