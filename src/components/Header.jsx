@@ -13,15 +13,15 @@ import './Header.css';
 const Header = ({ changeIsVisible, title }) => (
   <header className="header-container">
     <Link to="/perfil">
-      <img 
-        src={profileIcon} 
-        alt="Profile Icon" 
-        data-testid="profile-top-btn" 
+      <img
+        src={profileIcon}
+        alt="Profile Icon"
+        data-testid="profile-top-btn"
         className="header-icon"
       />
     </Link>
     <div className="header-title">
-    <h3 data-testid="page-title">{title}</h3>
+      <h3 data-testid="page-title">{title}</h3>
     </div>
     <button type="button" onClick={() => changeIsVisible()}>
       <img src={searchIcon} alt="Search Icon" data-testid="search-top-btn" className="search-btn" />

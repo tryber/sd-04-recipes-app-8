@@ -11,7 +11,7 @@ const updateSearchBar = (event, searchSetting, setSearchSetting) => {
 
 const rendersSearchInput = (searchSetting, setSearchSetting) => (
   <div className="search-input">
-  <label htmlFor="searchInput">
+    <label htmlFor="searchInput">
     Buscar:
     <input
       type="text"
@@ -108,13 +108,13 @@ const SearchBar = () => {
   return (
     <div className="search-btn">
       <div>
-      {searchSetting.recipesEqualOne ? (<Redirect push to={`${initialPath}`} />) : null}
-      {rendersSearchInput(searchSetting, setSearchSetting)}
-      {rendersSearchOption(searchSetting, setSearchSetting)}
-      <button data-testid="exec-search-btn" onClick={() => submitSearch()}>
+        {searchSetting.recipesEqualOne ? (<Redirect push to={`${initialPath}`} />) : null}
+        {rendersSearchInput(searchSetting, setSearchSetting)}
+        {rendersSearchOption(searchSetting, setSearchSetting)}
+        <button data-testid="exec-search-btn" onClick={() => submitSearch()}>
         Pesquisar!
     </button>
-    </div>
+      </div>
     </div>
   );
 };
