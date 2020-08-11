@@ -10,7 +10,6 @@ import Footer from '../components/Footer';
 import { changeLocation } from '../actions/index';
 import FetchThemealAPI from '../actions/themealdb';
 import FetchCategoriesAPI from '../actions/categoriesdbActions';
-// import { searchResultMoreOne } from '../actions/searchBarAction';
 
 const MainPageFoods = ({
   searchBarVisible,
@@ -25,7 +24,7 @@ const MainPageFoods = ({
   useEffect(() => {
     saveLocation(window.location.pathname);
     dispatch(FetchCategoriesAPI());
-    dispatch(FetchThemealAPI({ searchedValue: '' }));
+    recipes.length === 0 && dispatch(FetchThemealAPI({ searchedValue: '' }));
   }, []);
 
   return (
@@ -42,7 +41,6 @@ const MainPageFoods = ({
 
 const mapStateToProps = (state) => ({
   searchBarVisible: state.searchBar.isVisible,
-  // searchResultMoreOne: state.searchBar.searchResultMoreOne,
   isFetching: state.ThemealDB.isFetching,
   recipes: state.ThemealDB.recipes,
   isFetchingCategories: state.CategoriesReducer.isFetchingCategories,
@@ -55,7 +53,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 MainPageFoods.propTypes = {
   searchBarVisible: PropTypes.bool.isRequired,
-  // searchResultMoreOne: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
   saveLocation: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.string).isRequired,

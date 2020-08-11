@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import ExploreHeader from '../components/ExploreHeader';
@@ -10,9 +10,13 @@ import FetchIngredientsAPI from '../actions/ingredientsActions';
 import { changeLocation } from '../actions/index';
 import FetchThemealAPI from '../actions/themealdb';
 
-const ExploreByIngredient = ({ isFetchingIngredients, ingredients }) => {
+const ExploreByIngredient = ({
+  isFetchingIngredients,
+  ingredients,
+  isFetchingRecipes,
+}) => {
+  const [redirect, setRedirect] = useState(false);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(changeLocation(window.location.pathname.slice(9, 17)));
     dispatch(FetchIngredientsAPI());
@@ -22,23 +26,28 @@ const ExploreByIngredient = ({ isFetchingIngredients, ingredients }) => {
     window.location.pathname.slice(9, 17) === '/comidas'
       ? 'themeal'
       : 'thecocktail';
+
   const ingredientType =
     window.location.pathname.slice(9, 17) === '/comidas'
       ? 'Ingredient'
       : 'Ingredient1';
 
+  const handleClick = (event, ingredient) => {
+    event.preventDefault();
+    setRedirect(true);
+    dispatch(
+      FetchThemealAPI({
+        searchOption: 'ingredient',
+        searchedValue: ingredient,
+      }),
+    );
+  };
+
   const renderIngredientCards = (arrIngredients) =>
     arrIngredients.slice(0, 12).map((item, index) => (
       <Link
         to={window.location.pathname.slice(9, 17)}
-        onClick={() =>
-          dispatch(
-            FetchThemealAPI({
-              searchOption: 'ingredient',
-              searchedValue: item[`str${ingredientType}`],
-            }),
-          )
-        }
+        onClick={(event) => handleClick(event, item[`str${ingredientType}`])}
       >
         <div data-testid={`${index}-ingredient-card`}>
           <img
@@ -55,6 +64,9 @@ const ExploreByIngredient = ({ isFetchingIngredients, ingredients }) => {
       </Link>
     ));
 
+  if (redirect && !isFetchingRecipes)
+    return <Redirect to={window.location.pathname.slice(9, 17)} />;
+
   return (
     <div>
       <ExploreHeader title={'Explorar Ingredientes'} />
@@ -68,11 +80,13 @@ const ExploreByIngredient = ({ isFetchingIngredients, ingredients }) => {
 const mapStateToProps = (state) => ({
   isFetchingIngredients: state.IngredientsReducer.isFetchingIngredients,
   ingredients: state.IngredientsReducer.ingredients,
+  isFetchingRecipes: state.ThemealDB.isFetching,
 });
 
 ExploreByIngredient.propTypes = {
   isFetchingIngredients: PropTypes.bool.isRequired,
   ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isFetchingRecipes: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, null)(ExploreByIngredient);

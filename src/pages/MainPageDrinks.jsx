@@ -24,8 +24,8 @@ const MainPageDrinks = ({
 
   useEffect(() => {
     saveLocation(window.location.pathname);
-    dispatch(FetchThemealAPI({ searchedValue: '' }));
     dispatch(FetchCategoriesAPI());
+    recipes.length === 0 && dispatch(FetchThemealAPI({ searchedValue: '' }));
   }, []);
 
   return (
@@ -42,7 +42,6 @@ const MainPageDrinks = ({
 
 const mapStateToProps = (state) => ({
   searchBarVisible: state.searchBar.isVisible,
-  // searchResultMoreOne: state.searchBar.searchResultMoreOne,
   isFetching: state.ThemealDB.isFetching,
   recipes: state.ThemealDB.recipes,
   isFetchingCategories: state.CategoriesReducer.isFetchingCategories,
@@ -55,7 +54,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 MainPageDrinks.propTypes = {
   searchBarVisible: PropTypes.bool.isRequired,
-  // searchResultMoreOne: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
   saveLocation: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.string).isRequired,

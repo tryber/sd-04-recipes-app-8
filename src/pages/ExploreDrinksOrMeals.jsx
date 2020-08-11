@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -8,7 +8,8 @@ import Footer from '../components/Footer';
 
 import FetchRandomAPI from '../actions/RandomActions';
 
-const ExploreDrinksOrMeals = ({ id }) => {
+const ExploreDrinksOrMeals = ({ id, isFetchingRandom }) => {
+  const [redirect, setRedirect] = useState(false);
   const dispatch = useDispatch();
   const initialPath = window.location.pathname.slice(9, 17);
   const pageURL = window.location.pathname;
@@ -16,7 +17,12 @@ const ExploreDrinksOrMeals = ({ id }) => {
   const headerTitle =
     pageURL === '/explorar/comidas' ? 'Explorar Comidas' : 'Explorar Bebidas';
 
-  if (id.length > 0) {
+  const handleClick = () => {
+    setRedirect(true);
+    dispatch(FetchRandomAPI(initialPath));
+  };
+
+  if (redirect && !isFetchingRandom) {
     return <Redirect to={`${initialPath}/${id[0][`id${recipeType}`]}`} />;
   }
 
@@ -38,7 +44,7 @@ const ExploreDrinksOrMeals = ({ id }) => {
       <button
         type="button"
         data-testid="explore-surprise"
-        onClick={() => dispatch(FetchRandomAPI(initialPath))}
+        onClick={() => handleClick()}
       >
         Me Surpreenda!
       </button>
@@ -49,10 +55,12 @@ const ExploreDrinksOrMeals = ({ id }) => {
 
 const mapStateToProps = (state) => ({
   id: state.DetailReducer.id,
+  isFetchingRandom: state.DetailReducer.isFetchingRandom,
 });
 
 ExploreDrinksOrMeals.propTypes = {
   id: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isFetchingRandom: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, null)(ExploreDrinksOrMeals);
