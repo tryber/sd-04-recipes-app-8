@@ -17,8 +17,9 @@ const ExploreDrinksOrMeals = ({ id, currentLocation }) => {
       ? 'Explorar Comidas'
       : 'Explorar Bebidas';
 
-  if (id.length > 0)
+  if (id.length > 0) {
     return <Redirect to={`${surprise}/${id[0][`id${recipeType}`]}`} />;
+  }
 
   return (
     <div>
