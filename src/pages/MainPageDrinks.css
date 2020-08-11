@@ -2,7 +2,7 @@
   background-color: white;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex: wrap;
   font-family: Yellowtail, cursive;
   font-size: 20px;
   font-weight: 100;
