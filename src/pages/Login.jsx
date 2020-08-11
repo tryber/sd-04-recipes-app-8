@@ -33,8 +33,8 @@ const Login = ({ saveMail }) => {
     <div className="body">
       <div style={{ margin: 'auto', height: '640px', display: 'flex' }}>
         <form className="form-container">
-        <h1 className="app-name">{' Couscous à la Mathieu '}</h1>
-        <img src={mathieuchef} className="image" alt="Foto do Mathieu Chef" />
+          <h1 className="app-name">{' Couscous à la Mathieu '}</h1>
+          <img src={mathieuchef} className="image" alt="Foto do Mathieu Chef" />
       Login
       <input
         className="login-and-pass-input"
@@ -43,15 +43,15 @@ const Login = ({ saveMail }) => {
         placeholder="Email"
         onChange={(event) => checkEmail(event.target.value)}
       />
-        <input
-        className="login-and-pass-input"
-        type="password"
-        data-testid="password-input"
-        placeholder="Senha"
-        onChange={(event) => checkPassword(event.target.value)}
+          <input
+          className="login-and-pass-input"
+          type="password"
+          data-testid="password-input"
+          placeholder="Senha"
+          onChange={(event) => checkPassword(event.target.value)}
       />
-        <Link to="/comidas">
-        <button
+          <Link to="/comidas">
+          <button
           className="signin-button"
           type="button"
           data-testid="login-submit-btn"
@@ -60,8 +60,8 @@ const Login = ({ saveMail }) => {
         >
           Entrar
         </button>
-      </Link>
-      </form>
+        </Link>
+        </form>
       </div>
     </div>
   );

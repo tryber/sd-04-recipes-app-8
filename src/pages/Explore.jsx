@@ -18,10 +18,10 @@ const Explore = () => (
       </div>
       <div>
         <Link to="/explorar/bebidas">
-        <button className="explore-btn" type="button" data-testid="explore-drinks">
+          <button className="explore-btn" type="button" data-testid="explore-drinks">
         Explorar Bebidas
       </button>
-      </Link>
+        </Link>
       </div>
       <Footer />
     </div>
