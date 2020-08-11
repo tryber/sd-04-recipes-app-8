@@ -14,6 +14,7 @@ import ExploreDrinksOrMeals from './pages/ExploreDrinksOrMeals';
 import ExploreByIngredient from './pages/ExploreByIngredients';
 import ExploreByArea from './pages/ExploreByArea';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
       />
       <Route exact path="/explorar/comidas/area" component={ExploreByArea} />
       <Route exact path="/perfil" component={Profile} />
+      <Route path="*" component={NotFound} />
     </Switch>
   );
 }
