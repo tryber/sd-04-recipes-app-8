@@ -24,7 +24,7 @@ const MainPageFoods = ({
   useEffect(() => {
     saveLocation(window.location.pathname);
     dispatch(FetchCategoriesAPI());
-    recipes.length === 0 && dispatch(FetchThemealAPI({ searchedValue: '' }));
+    if (recipes.length === 0) {dispatch(FetchThemealAPI({ searchedValue: '' }))};
   }, []);
 
   return (

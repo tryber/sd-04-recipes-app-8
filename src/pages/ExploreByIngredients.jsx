@@ -64,8 +64,9 @@ const ExploreByIngredient = ({
       </Link>
     ));
 
-  if (redirect && !isFetchingRecipes)
-    return <Redirect to={window.location.pathname.slice(9, 17)} />;
+  if (redirect && !isFetchingRecipes) {
+    return <Redirect to={window.location.pathname.slice(9, 17)} />
+  };
 
   return (
     <div>
