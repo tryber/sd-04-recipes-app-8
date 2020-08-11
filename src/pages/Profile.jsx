@@ -14,7 +14,7 @@ const Profile = ({ email }) => (
       <img src={profileIcon} alt="Profile Icon" data-testid="profile-top-btn" />
       <h3 data-testid="page-title">Perfil</h3>
     </header>
-    <div className="profile-info-display" className="profile-email">
+    <div className="profile-email">
       <p data-testid="profile-email">{email}</p>
     </div>
     <div className="profile-btn-container">
