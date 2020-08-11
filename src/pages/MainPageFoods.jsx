@@ -8,7 +8,7 @@ import CategoryButtons from '../components/CategoryButtons';
 import Footer from '../components/Footer';
 
 import { changeLocation } from '../actions/index';
-import FetchThemealAPI from '../actions/themealdb';
+import FetchThemealAPI, { changeFetchByIngredient } from '../actions/themealdb';
 import FetchCategoriesAPI from '../actions/categoriesdbActions';
 
 const MainPageFoods = ({
@@ -18,15 +18,17 @@ const MainPageFoods = ({
   isFetchingCategories,
   categories,
   recipes,
+  isFetchByIngredient,
 }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     saveLocation(window.location.pathname);
     dispatch(FetchCategoriesAPI());
-    if (recipes.length === 0) {
+    if (!isFetchByIngredient) {
       dispatch(FetchThemealAPI({ searchedValue: '' }));
     }
+    dispatch(changeFetchByIngredient());
   }, []);
 
   return (
@@ -47,6 +49,7 @@ const mapStateToProps = (state) => ({
   recipes: state.ThemealDB.recipes,
   isFetchingCategories: state.CategoriesReducer.isFetchingCategories,
   categories: state.CategoriesReducer.categories,
+  isFetchByIngredient: state.ThemealDB.isFetchByIngredient,
 });
 
 const mapDispatchToProps = (dispatch) => ({

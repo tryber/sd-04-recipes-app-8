@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -8,14 +8,14 @@ import Footer from '../components/Footer';
 
 import FetchIngredientsAPI from '../actions/ingredientsActions';
 import { changeLocation } from '../actions/index';
-import FetchThemealAPI from '../actions/themealdb';
+import FetchThemealAPI, { fetchByIngredient } from '../actions/themealdb';
 
 const ExploreByIngredient = ({
   isFetchingIngredients,
   ingredients,
+  isFetchByIngredient,
   isFetchingRecipes,
 }) => {
-  const [redirect, setRedirect] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(changeLocation(window.location.pathname.slice(9, 17)));
@@ -34,7 +34,7 @@ const ExploreByIngredient = ({
 
   const handleClick = (event, ingredient) => {
     event.preventDefault();
-    setRedirect(true);
+    dispatch(fetchByIngredient());
     dispatch(
       FetchThemealAPI({
         searchOption: 'ingredient',
@@ -64,7 +64,7 @@ const ExploreByIngredient = ({
       </Link>
     ));
 
-  if (redirect && !isFetchingRecipes) {
+  if (isFetchByIngredient && !isFetchingRecipes) {
     return <Redirect to={window.location.pathname.slice(9, 17)} />;
   }
 
@@ -81,13 +81,14 @@ const ExploreByIngredient = ({
 const mapStateToProps = (state) => ({
   isFetchingIngredients: state.IngredientsReducer.isFetchingIngredients,
   ingredients: state.IngredientsReducer.ingredients,
+  isFetchByIngredient: state.ThemealDB.isFetchByIngredient,
   isFetchingRecipes: state.ThemealDB.isFetching,
 });
 
 ExploreByIngredient.propTypes = {
   isFetchingIngredients: PropTypes.bool.isRequired,
   ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
-  isFetchingRecipes: PropTypes.bool.isRequired,
+  isFetchByIngredient: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, null)(ExploreByIngredient);

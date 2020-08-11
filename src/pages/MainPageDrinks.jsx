@@ -9,7 +9,7 @@ import CategoryButtons from '../components/CategoryButtons';
 import Footer from '../components/Footer';
 
 import { changeLocation } from '../actions/index';
-import FetchThemealAPI from '../actions/themealdb';
+import FetchThemealAPI, { changeFetchByIngredient } from '../actions/themealdb';
 import FetchCategoriesAPI from '../actions/categoriesdbActions';
 
 const MainPageDrinks = ({
@@ -19,15 +19,17 @@ const MainPageDrinks = ({
   isFetchingCategories,
   categories,
   recipes,
+  isFetchByIngredient,
 }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     saveLocation(window.location.pathname);
     dispatch(FetchCategoriesAPI());
-    if (recipes.length === 0) {
+    if (!isFetchByIngredient) {
       dispatch(FetchThemealAPI({ searchedValue: '' }));
     }
+    dispatch(changeFetchByIngredient());
   }, []);
 
   return (
@@ -48,6 +50,7 @@ const mapStateToProps = (state) => ({
   recipes: state.ThemealDB.recipes,
   isFetchingCategories: state.CategoriesReducer.isFetchingCategories,
   categories: state.CategoriesReducer.categories,
+  isFetchByIngredient: state.ThemealDB.isFetchByIngredient,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -61,6 +64,7 @@ MainPageDrinks.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.string).isRequired,
   isFetchingCategories: PropTypes.bool.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isFetchByIngredient: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPageDrinks);
