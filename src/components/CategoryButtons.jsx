@@ -32,11 +32,10 @@ const CategoryButtons = ({ categories }) => {
     <div>
       <div className="category-btns">
         <button
-        className="btn1"
-        data-testid="All-category-filter"
-        type="button"
-        onClick={() => dispatch(FetchThemealAPI({ searchedValue: '' }))}
-      >
+          className="btn1"
+          data-testid="All-category-filter"
+          type="button"
+          onClick={() => dispatch(FetchThemealAPI({ searchedValue: '' }))}>
         All
       </button>
         {categories.slice(0, 5).map((item) => (

@@ -9,13 +9,13 @@ import '../components/ExploreHeader.css';
 const ExploreHeader = ({ title }) => (
   <header>
     <div>
-    <div className="explore-header-container">
+      <div className="explore-header-container">
       <Link to="/perfil">
-      <img src={profileIcon} alt="Profile Icon" data-testid="profile-top-btn" />
+        <img src={profileIcon} alt="Profile Icon" data-testid="profile-top-btn" />
       </Link><br></br>
       <h3 data-testid="page-title">{title}</h3>
     </div>
-  </div>
+    </div>
   </header>
 );
 
