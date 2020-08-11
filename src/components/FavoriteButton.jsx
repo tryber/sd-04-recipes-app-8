@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { requestFavoriteFetching, favoriteFetchingSuccess } from '../actions/favoriteAction';
 import './ShareFavButtons.css';
 
@@ -68,8 +69,9 @@ const handleFavorite = (favorite, setFavorite, props, dispatch) => {
   setFavorite(!favorite);
 };
 
-
 const FavoriteButton = (props) => {
+  let testidBtn = 'favorite-btn';
+  if (typeof props.testid !== 'undefined') testidBtn = `${props.testid}-horizontal-favorite-btn`;
   const dispatch = useDispatch();
   const [favorite, setFavorite] = useState(false);
   const backgroundBtn = favorite ? blackHeartIcon : whiteHeartIcon;
@@ -80,12 +82,16 @@ const FavoriteButton = (props) => {
   return (
     <input
       type="image"
-      data-testid="favorite-btn"
+      data-testid={testidBtn}
       className="share-fav-buttons"
       onClick={() => handleFavorite(favorite, setFavorite, props, dispatch)}
       src={backgroundBtn} alt="Favorite Button"
     />
   );
+};
+
+FavoriteButton.propTypes = {
+  testid: PropTypes.string.isRequired,
 };
 
 export default FavoriteButton;
