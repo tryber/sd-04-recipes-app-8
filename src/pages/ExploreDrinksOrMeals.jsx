@@ -8,29 +8,28 @@ import Footer from '../components/Footer';
 
 import FetchRandomAPI from '../actions/RandomActions';
 
-const ExploreDrinksOrMeals = ({ id, currentLocation }) => {
+const ExploreDrinksOrMeals = ({ id }) => {
   const dispatch = useDispatch();
-  const surprise = window.location.pathname.slice(9, 17);
-  const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
+  const initialPath = window.location.pathname.slice(9, 17);
+  const pageURL = window.location.pathname;
+  const recipeType = pageURL === '/explorar/comidas' ? 'Meal' : 'Drink';
   const headerTitle =
-    currentLocation === '/explorar/comidas'
-      ? 'Explorar Comidas'
-      : 'Explorar Bebidas';
+    pageURL === '/explorar/comidas' ? 'Explorar Comidas' : 'Explorar Bebidas';
 
   if (id.length > 0) {
-    return <Redirect to={`${surprise}/${id[0][`id${recipeType}`]}`} />;
+    return <Redirect to={`${initialPath}/${id[0][`id${recipeType}`]}`} />;
   }
 
   return (
     <div>
       <ExploreHeader title={headerTitle} />
-      <Link to={`${currentLocation}/ingredientes`}>
+      <Link to={`${pageURL}/ingredientes`}>
         <button type="button" data-testid="explore-by-ingredient">
           Por Ingredientes
         </button>
       </Link>
-      {currentLocation === '/explorar/comidas' && (
-        <Link to={`${currentLocation}/area`}>
+      {pageURL === '/explorar/comidas' && (
+        <Link to={`${pageURL}/area`}>
           <button type="button" data-testid="explore-by-area">
             Por Local de Origem
           </button>
@@ -50,12 +49,10 @@ const ExploreDrinksOrMeals = ({ id, currentLocation }) => {
 
 const mapStateToProps = (state) => ({
   id: state.DetailReducer.id,
-  currentLocation: state.updateLocation.currentLocation,
 });
 
 ExploreDrinksOrMeals.propTypes = {
   id: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentLocation: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, null)(ExploreDrinksOrMeals);
