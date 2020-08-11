@@ -7,6 +7,7 @@ import FetchDetailIdAPI from '../actions/detailActionsId';
 import FetchDetailRecomandAPI from '../actions/detailActionsRecomand';
 
 import RecipeDetails from '../components/RecipeDetails';
+import Ingredients from '../components/Ingredients';
 import RecipeVideo from '../components/RecipeVideo';
 import RecomendationCards from '../components/RecomendationCards';
 import StartRecipe from '../components/StartRecipe';
@@ -34,6 +35,7 @@ const DetailsPage = ({ currentLocation, recipe, recomendation }) => {
   return (
     <div>
       {recipe.length > 0 && <RecipeDetails />}
+      {recipe.length > 0 && <Ingredients />}
       {recipeType === 'Meal' && recipe.length > 0 && <RecipeVideo />}
       {recomendation.length > 0 && <RecomendationCards />}
       <StartRecipe />

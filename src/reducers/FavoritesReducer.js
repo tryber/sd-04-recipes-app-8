@@ -4,16 +4,16 @@ import {
 } from '../actions/favoriteAction';
 
 const initialState = {
-  favoriteListFetching: false,
+  favoriteListFetching: true,
 };
 
 export default (state = initialState, { type, payload }) => {
   console.log('Action Favorites Reducer', type, payload);
   switch (type) {
     case REQUEST_FAVORITE_FETCHING:
-      return { favoriteListFetching: true };
+      return { ...state, favoriteListFetching: !state.favoriteListFetching };
     case RECEIVE_FAVORITE_FETCHING_SUCCESS:
-      return { favoriteListFetching: false };
+    // return { ...state, favoriteListFetching: false };
     default:
       return state;
   }
