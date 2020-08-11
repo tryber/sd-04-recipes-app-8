@@ -52,11 +52,11 @@ const Login = ({ saveMail }) => {
       />
           <Link to="/comidas">
             <button
-            className="signin-button"
-            type="button"
-            data-testid="login-submit-btn"
-            disabled={!validEmail || !validPassword}
-            onClick={() => handleLogin()}
+              className="signin-button"
+              type="button"
+              data-testid="login-submit-btn"
+              disabled={!validEmail || !validPassword}
+              onClick={() => handleLogin()}
         >
           Entrar
         </button>
