@@ -24,13 +24,14 @@ const ShareButton = (props) => {
         onClick={() => handleCopyClipBoard()}
         src={shareIcon} alt="Share Button"
       />
-       {copyToClipBoard && <span>Link copiado!</span>}
+      {copyToClipBoard && <span>Link copiado!</span>}
     </div>
   );
 };
 
 ShareButton.propTypes = {
   idInput: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   testid: PropTypes.string.isRequired,
 };
 

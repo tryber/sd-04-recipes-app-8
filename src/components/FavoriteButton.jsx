@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { requestFavoriteFetching, favoriteFetchingSuccess } from '../actions/favoriteAction';
 import './ShareFavButtons.css';
 
@@ -68,7 +69,6 @@ const handleFavorite = (favorite, setFavorite, props, dispatch) => {
   setFavorite(!favorite);
 };
 
-
 const FavoriteButton = (props) => {
   let testidBtn = 'favorite-btn';
   if (typeof props.testid !== 'undefined') testidBtn = `${props.testid}-horizontal-favorite-btn`;
@@ -91,7 +91,6 @@ const FavoriteButton = (props) => {
 };
 
 FavoriteButton.propTypes = {
-  idInput: PropTypes.string.isRequired,
   testid: PropTypes.string.isRequired,
 };
 

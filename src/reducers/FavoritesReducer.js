@@ -13,7 +13,7 @@ export default (state = initialState, { type, payload }) => {
     case REQUEST_FAVORITE_FETCHING:
       return { ...state, favoriteListFetching: !state.favoriteListFetching };
     case RECEIVE_FAVORITE_FETCHING_SUCCESS:
-    return { ...state} ;
+      return { ...state };
     default:
       return state;
   }
