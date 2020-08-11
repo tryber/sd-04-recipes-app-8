@@ -19,24 +19,24 @@ const Profile = ({ email }) => (
     </div>
     <div className="profile-btn-container">
       <Link to="/receitas-feitas">
-      <button type="button" className="profile-btn" data-testid="profile-done-btn">
+        <button type="button" className="profile-btn" data-testid="profile-done-btn">
         Receitas Feitas
       </button>
-    </Link>
+      </Link>
       <Link to="/receitas-favoritas">
-      <button type="button" className="profile-btn" data-testid="profile-favorite-btn">
+        <button type="button" className="profile-btn" data-testid="profile-favorite-btn">
         Receitas Favoritas
       </button>
-    </Link>
+      </Link>
       <Link to="/">
-      <button
+        <button
         className="profile-btn"
         type="button"
         data-testid="profile-logout-btn"
         onClick={() => localStorage.clear()}>
         Sair
       </button>
-    </Link>
+      </Link>
       <Footer />
     </div>
   </div>

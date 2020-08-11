@@ -40,7 +40,7 @@ const CategoryButtons = ({ categories }) => {
         All
         </button>
         {categories.slice(0, 5).map((item) => (
-            <button
+          <button
               className="btn2"
               data-testid={`${item.strCategory}-category-filter`}
               key={item.strCategory}
