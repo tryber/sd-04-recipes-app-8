@@ -29,9 +29,7 @@ const rendersFilterOption = (filterSetting, setFilterSetting) => {
 };
 
 const FavoriteRecipes = () => {
-  const { favoriteListFetching } = useSelector(
-    (state) => state.FavoritesReducer,
-  );
+  const { favoriteListFetching } = useSelector((state) => state.FavoritesReducer);
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   useEffect(() => {
     setFavoriteRecipes(JSON.parse(localStorage.getItem('favoriteRecipes')));
@@ -59,14 +57,10 @@ const FavoriteRecipes = () => {
                   </h4>
                 )}
                 {recipe.type === 'bebida' && (
-                  <h4 data-testid={`${index}-horizontal-top-text`}>
-                    {recipe.alcoholicOrNot}
-                  </h4>
+                  <h4 data-testid={`${index}-horizontal-top-text`}>{recipe.alcoholicOrNot}</h4>
                 )}
                 <Link to={`/${recipe.type}s/${recipe.id}`}>
-                  <h3 data-testid={`${index}-horizontal-name`}>
-                    {recipe.name}
-                  </h3>
+                  <h3 data-testid={`${index}-horizontal-name`}>{recipe.name}</h3>
                   <img
                     data-testid={`${index}-horizontal-image`}
                     src={recipe.image}
