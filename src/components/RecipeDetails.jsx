@@ -28,8 +28,7 @@ const RecipeDetails = ({ recipe, currentLocation }) => {
           <h3>Instructions</h3>
           <p data-testid="instructions">{item.strInstructions}</p>
         </div>
-      ))
-      }
+      ))}
     </div>
   );
 };
