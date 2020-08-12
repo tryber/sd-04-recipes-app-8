@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import profileIcon from '../images/profileIcon.svg';
@@ -9,8 +7,9 @@ import './Profile.css';
 const Profile = () => {
   const [userLocalStorage, setUserLocalStorage] = useState('');
   useEffect(() => {
-    setUserLocalStorage(JSON.parse(localStorage.getItem('user')).email);
-    console.log('user:', userLocalStorage);
+    if (JSON.parse(localStorage.getItem('user')) != null) {
+      setUserLocalStorage(JSON.parse(localStorage.getItem('user')).email);
+    }
   }, []);
 
   return (
@@ -23,7 +22,6 @@ const Profile = () => {
         />
         <h3 data-testid="page-title">Perfil</h3>
       </header>
-      {/* <p data-testid="profile-email">{email}</p> */}
       <p data-testid="profile-email">{userLocalStorage}</p>
       <Link to="/receitas-feitas">
         <button type="button" data-testid="profile-done-btn">
@@ -48,13 +46,5 @@ const Profile = () => {
     </div>
   );
 };
-
-// const mapStateToProps = (state) => ({
-//   email: state.saveEmail.email,
-// });
-// Profile.propTypes = {
-//   email: PropTypes.string.isRequired,
-// };
-// export default connect(mapStateToProps, null)(Profile);
 
 export default Profile;
