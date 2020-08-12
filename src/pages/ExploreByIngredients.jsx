@@ -89,6 +89,7 @@ ExploreByIngredient.propTypes = {
   isFetchingIngredients: PropTypes.bool.isRequired,
   ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
   isFetchByIngredient: PropTypes.bool.isRequired,
+  isFetchingRecipes: PropTypes.bool.isRequired,
 };
-// teste CC
+
 export default connect(mapStateToProps, null)(ExploreByIngredient);

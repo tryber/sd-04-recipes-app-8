@@ -63,6 +63,7 @@ MainPageFoods.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.string).isRequired,
   isFetchingCategories: PropTypes.bool.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isFetchByIngredient: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPageFoods);
