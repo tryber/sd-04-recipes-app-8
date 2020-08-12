@@ -8,7 +8,7 @@ const Ingredients = ({ recipe }) =>
   Object.entries(objIngredients(recipe)).map((item, index) => (
     <p
       data-testid={`${index}-ingredient-name-and-measure`}
-    >{`- ${item[0]} - ${item[1]}`}</p>
+    >{`${item[0]} ${item[1]}`}</p>
   ));
 
 const mapStateToProps = (state) => ({
