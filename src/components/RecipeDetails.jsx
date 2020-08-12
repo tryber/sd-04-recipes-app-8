@@ -9,9 +9,13 @@ import './RecipeCards.css';
 const RecipeDetails = ({ recipe, currentLocation }) => {
   const recipeType = currentLocation === '/comidas' ? 'Meal' : 'Drink';
   const category = currentLocation === '/comidas' ? 'Category' : 'Alcoholic';
+
   return (
     <div>
-      <ShareButton />
+      <ShareButton
+        type={currentLocation.slice(1)}
+        idInput={Object.values(recipe[0])[0]}
+      />
       <FavoriteButton recipe={recipe} recipeType={recipeType} />
       {recipe.map((item) => (
         <div key={item[`id${recipeType}`]}>

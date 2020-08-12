@@ -34,6 +34,7 @@ const RecipeInProgress = ({ recipe, recipeID }) => {
         >
           {`${item[0]} - ${item[1]}`}
           <input
+            // data-testid={`${index}-ingredient-step`}
             type="checkbox"
             name={`${item[0]} - ${item[1]}`}
             // checked={checked}
