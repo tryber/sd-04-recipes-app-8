@@ -26,10 +26,7 @@ function callAPI(typepage) {
 
 export default function FetchRandomAPI(typepage) {
   return (dispatch) => {
-    // const {
-    //   updateLocation: { currentLocation: typepage },
-    // } = state();
-    dispatch(requestRandomAPI);
+    dispatch(requestRandomAPI());
     return callAPI(typepage).then(
       (data) => dispatch(requestRandomAPISuccess(data)),
       (error) => dispatch(receiveRandomAPIFailure(error.message)),

@@ -6,12 +6,23 @@ export const RECEIVE_THEMEALAPI_FAILURE = 'RECEIVE_THEMEALAPI_FAILURE';
 export const REQUEST_RESET_FETCH_STATE = 'REQUEST_RESET_FETCH_STATE';
 export const REQUEST_RESET_RECIPES_STATE = 'REQUEST_RESET_RECIPES_STATE';
 
+export const FETCH_BY_INGREDIENT = 'FETCH_BY_INGREDIENT';
+export const CHANGE_FETCH_BY_INGREDIENT = 'CHANGE_FETCH_BY_INGREDIENT';
+
 export const requestResetAPI = () => ({
   type: REQUEST_RESET_FETCH_STATE,
 });
 
 export const requestResetRecipes = () => ({
   type: REQUEST_RESET_RECIPES_STATE,
+});
+
+export const fetchByIngredient = () => ({
+  type: FETCH_BY_INGREDIENT,
+});
+
+export const changeFetchByIngredient = () => ({
+  type: CHANGE_FETCH_BY_INGREDIENT,
 });
 
 const requestThemealAPI = () => ({

@@ -8,9 +8,8 @@ import CategoryButtons from '../components/CategoryButtons';
 import Footer from '../components/Footer';
 
 import { changeLocation } from '../actions/index';
-import FetchThemealAPI from '../actions/themealdb';
+import FetchThemealAPI, { changeFetchByIngredient } from '../actions/themealdb';
 import FetchCategoriesAPI from '../actions/categoriesdbActions';
-// import { searchResultMoreOne } from '../actions/searchBarAction';
 
 const MainPageFoods = ({
   searchBarVisible,
@@ -19,13 +18,17 @@ const MainPageFoods = ({
   isFetchingCategories,
   categories,
   recipes,
+  isFetchByIngredient,
 }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     saveLocation(window.location.pathname);
     dispatch(FetchCategoriesAPI());
-    dispatch(FetchThemealAPI({ searchedValue: '' }));
+    if (!isFetchByIngredient) {
+      dispatch(FetchThemealAPI({ searchedValue: '' }));
+    }
+    dispatch(changeFetchByIngredient());
   }, []);
 
   return (
@@ -42,11 +45,11 @@ const MainPageFoods = ({
 
 const mapStateToProps = (state) => ({
   searchBarVisible: state.searchBar.isVisible,
-  // searchResultMoreOne: state.searchBar.searchResultMoreOne,
   isFetching: state.ThemealDB.isFetching,
   recipes: state.ThemealDB.recipes,
   isFetchingCategories: state.CategoriesReducer.isFetchingCategories,
   categories: state.CategoriesReducer.categories,
+  isFetchByIngredient: state.ThemealDB.isFetchByIngredient,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -55,12 +58,12 @@ const mapDispatchToProps = (dispatch) => ({
 
 MainPageFoods.propTypes = {
   searchBarVisible: PropTypes.bool.isRequired,
-  // searchResultMoreOne: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
   saveLocation: PropTypes.func.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.string).isRequired,
   isFetchingCategories: PropTypes.bool.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isFetchByIngredient: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPageFoods);

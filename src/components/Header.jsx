@@ -16,9 +16,13 @@ const Header = ({ changeIsVisible, title }) => (
       <img src={profileIcon} alt="Profile Icon" data-testid="profile-top-btn" />
     </Link>
     <h3 data-testid="page-title">{title}</h3>
-    <button type="button" onClick={() => changeIsVisible()}>
-      <img src={searchIcon} alt="Search Icon" data-testid="search-top-btn" />
-    </button>
+    <input
+      type="image"
+      data-testid="search-top-btn"
+      src={searchIcon}
+      alt="Search Icon"
+      onClick={() => changeIsVisible()}
+    />
   </header>
 );
 

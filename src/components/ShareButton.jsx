@@ -7,9 +7,13 @@ const copy = require('clipboard-copy');
 
 const ShareButton = (props) => {
   let testidBtn = 'share-btn';
-  if (typeof props.testid !== 'undefined') testidBtn = `${props.testid}-horizontal-share-btn`;
+  if (typeof props.testid !== 'undefined') {
+    testidBtn = `${props.testid}-horizontal-share-btn`;
+  }
   let id = window.location.pathname;
-  if (typeof props.idInput !== 'undefined') id = `/${props.type}s/${props.idInput}`;
+  if (typeof props.idInput !== 'undefined') {
+    id = `/${props.type}/${props.idInput}`;
+  }
   const [copyToClipBoard, setCopyToClipBoard] = useState(false);
   const handleCopyClipBoard = () => {
     copy(`http://localhost:3000${id}`);
@@ -22,7 +26,8 @@ const ShareButton = (props) => {
         data-testid={testidBtn}
         className="share-fav-buttons"
         onClick={() => handleCopyClipBoard()}
-        src={shareIcon} alt="Share Button"
+        src={shareIcon}
+        alt="Share Button"
       />
       {copyToClipBoard && <span>Link copiado!</span>}
     </div>
