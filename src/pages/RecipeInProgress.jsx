@@ -11,7 +11,7 @@ import { changeLocation } from '../actions/index';
 
 const RecipeInProgress = ({ recipe, recipeID }) => {
   // const [isDisabled, enableBtn] = useState(true);
-  // const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(changeLocation(window.location.pathname.slice(0, 8)));
@@ -28,19 +28,17 @@ const RecipeInProgress = ({ recipe, recipeID }) => {
   const ingredientsList = () =>
     Object.entries(objIngredients(recipe)).map((item, index) => (
       <div data-testid={`${index}-ingredient-step`}>
+        <input
+          type="checkbox"
+          name={`${item[0]} - ${item[1]}`}
+          checked="true"
+          // checked={checked}
+        />
+        {`${item[0]} - ${item[1]}`}
         <label
           htmlFor={`${item[0]} - ${item[1]}`}
           key={`${item[0]} - ${item[1]}`}
-        >
-          {`${item[0]} - ${item[1]}`}
-          <input
-            // data-testid={`${index}-ingredient-step`}
-            type="checkbox"
-            name={`${item[0]} - ${item[1]}`}
-            // checked={checked}
-            // onChange={() => setChecked(!checked)}
-          />
-        </label>
+        />
       </div>
     ));
 
