@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -31,7 +31,7 @@ const RecipeInProgress = ({ recipe, recipeID }) => {
         <input
           type="checkbox"
           name={`${item[0]} - ${item[1]}`}
-          checked='true'
+          checked="true"
           // checked={checked}
         />
         {`${item[0]} - ${item[1]}`}
