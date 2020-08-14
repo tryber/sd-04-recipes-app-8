@@ -10,8 +10,8 @@ import FetchDetailIdAPI from '../actions/detailActionsId';
 import { changeLocation } from '../actions/index';
 
 const RecipeInProgress = ({ recipe, recipeID }) => {
-  const [isDisabled, enableBtn] = useState(true);
-  const [checked, setChecked] = useState(true);
+  // const [isDisabled, enableBtn] = useState(true);
+  // const [checked, setChecked] = useState(true);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(changeLocation(window.location.pathname.slice(0, 8)));
@@ -31,15 +31,14 @@ const RecipeInProgress = ({ recipe, recipeID }) => {
         <input
           type="checkbox"
           name={`${item[0]} - ${item[1]}`}
-          // checked='true'
-          checked={checked}
+          checked='true'
+          // checked={checked}
         />
         {`${item[0]} - ${item[1]}`}
         <label
           htmlFor={`${item[0]} - ${item[1]}`}
           key={`${item[0]} - ${item[1]}`}
-        >
-        </label>
+        />
       </div>
     ));
 
